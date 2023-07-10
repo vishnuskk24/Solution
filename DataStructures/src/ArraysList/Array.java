@@ -2,9 +2,9 @@ package ArraysList;
 
 public class Array<T> {
 
-	int counter;
-	int asize;
-	T[] arr ;
+	private int counter;
+	 private int asize;
+	 private T[] arr ;
 	
 	
 	public Array(int size) {
@@ -15,7 +15,7 @@ public class Array<T> {
 	public int size() {
 		return this.counter;
 	}
-	public   T[] transferArray() {
+	private   T[] transferArray() {
 		
 		T[] dup =(T[]) new Object[counter*2];
 		for(int i=0;i<this.arr.length;i++) {
@@ -43,7 +43,7 @@ public class Array<T> {
 		return -1;
 	}
 	public void print() {
-		for(int i=0 ; i<this.arr.length;i++) {
+		for(int i=0 ; i<this.counter;i++) {
 			if(this.arr[i]==null) {
 				break;
 			}
@@ -58,5 +58,26 @@ public class Array<T> {
 			
 		}
 		return false;
+	}
+	
+	public void removeAt(int index) throws Exception {
+		if(index>=this.counter) {
+			throw new Exception("Array Index Out of bound");
+		}else {
+			
+			for(int start = index; start<counter; start++) {
+				this.arr[start]=this.arr[start+1];
+			}
+			this.counter--;
+		}
+	}
+	public void remove() {
+		this.arr[this.counter-1]=null;
+		this.counter--;
+		
+	}
+	public T getLastIndex() {
+		System.out.println(this.counter + " last index value");
+		return this.arr[this.counter-1];
 	}
 }
