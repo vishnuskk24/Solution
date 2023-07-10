@@ -4,23 +4,30 @@ public class Tester {
 
 	public static void main(String[] args) throws Exception {
 		
-		Array<Integer> numbers = new Array<>(2);
-//		System.out.println(numbers.size() + " Size");
-		numbers.insert(5);
-		numbers.insert(4);
+//		Array<Integer> numbers = new Array<>(2);
+////		System.out.println(numbers.size() + " Size");
+//		numbers.insert(5);
+//		numbers.insert(4);
+////		System.out.println(numbers.size());
+//		numbers.insert(6);
 //		System.out.println(numbers.size());
-		numbers.insert(6);
-		System.out.println(numbers.size());
-//		numbers.remove();
+////		numbers.remove();
+////		System.out.println(numbers.size());
+//		
+//		
+//		numbers.insert(7);
+//		numbers.print(); System.out.println( "--------------------------");
+////		numbers.removeAt(3);
+//		numbers.update(3,32);
+//		numbers.print();
 //		System.out.println(numbers.size());
 		
-		
-		numbers.insert(7);
-		numbers.print(); System.out.println( "--------------------------");
-//		numbers.removeAt(3);
-		numbers.update(3,32);
-		numbers.print();
-		System.out.println(numbers.size());
+		Array<String> names = new Array<>(3);
+		names.insert("John");
+		names.insert("dom");
+		names.insert("lucifer");
+		names.insert("linkon");
+		names.print();
 	}
 }
 

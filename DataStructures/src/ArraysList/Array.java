@@ -26,7 +26,7 @@ public class Array<T> {
 	
 	public void insert(T value) {
 		
-		if(arr.length<=counter) {
+		if(arr.length<=this. counter) {
 			this.arr=this.transferArray(); // copying all the values from existing array to new larger array
 		}
 		this.arr[counter] =value;
