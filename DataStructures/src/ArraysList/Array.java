@@ -51,7 +51,7 @@ public class Array<T> {
 		}
 	}
 	public boolean isPresent(T value) {
-		for(int i=0;i<this.arr.length;i++) {
+		for(int i=0;i<this.counter;i++) {
 			if(this.arr[i]==value) {
 				return true;
 			}
@@ -62,10 +62,10 @@ public class Array<T> {
 	
 	public void removeAt(int index) throws Exception {
 		if(index>=this.counter) {
-			throw new Exception("Array Index Out of bound");
+			throw new Exception("Array Index Out of bound Array Size is " + this.counter + "  " + "Given index is " + index);
 		}else {
 			
-			for(int start = index; start<counter; start++) {
+			for(int start = index; start<counter-1; start++) {
 				this.arr[start]=this.arr[start+1];
 			}
 			this.counter--;
@@ -79,5 +79,16 @@ public class Array<T> {
 	public T getLastIndex() {
 		System.out.println(this.counter + " last index value");
 		return this.arr[this.counter-1];
+
+	}
+	
+	
+	public void update(int index,T value) throws Exception {
+		if(index>=this.counter) {
+			throw new Exception("Array Index Out of bound Array Size is " + this.counter + "  " + "Given index is " + index);
+		}else {
+			
+			this.arr[index] = value;
+		}
 	}
 }
