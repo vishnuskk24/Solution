@@ -22,16 +22,17 @@ public class Tester {
 //		numbers.print();
 //		System.out.println(numbers.size());
 		
-		Array<String> names = new Array<>(3);
-		names.insert("John");
-		names.insert("dom");
-		names.insert("lucifer");
-		names.insert("linkon");
-		names.printWithIndex();
-		names.insert(1, "dargo");
-		System.out.println("++++++++++++++++++++++++");
-		names.reverse();
-		names.printWithIndex();
+//		Array<String> names = new Array<>(3);
+//		names.insert("John");
+//		names.insert("dom");
+//		names.insert("lucifer");
+//		names.insert("linkon");
+//		names.printWithIndex();
+//		names.insert(1, "dargo");
+//		System.out.println("++++++++++++++++++++++++");
+//		names.reverse();
+//		names.printWithIndex();
+//	
 //		names.print();
 	}
 }
