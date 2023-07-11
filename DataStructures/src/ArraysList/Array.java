@@ -42,6 +42,15 @@ public class Array<T> {
 		}
 		return -1;
 	}
+	
+	public void printWithIndex() {
+		for(int i=0 ; i<=this.counter;i++) {
+			if(this.arr[i]==null) {
+				break;
+			}
+			System.out.println("index  => " + i+ " "+  this.arr[i]);
+		}
+	}
 	public void print() {
 		for(int i=0 ; i<this.counter;i++) {
 			if(this.arr[i]==null) {
@@ -90,5 +99,22 @@ public class Array<T> {
 			
 			this.arr[index] = value;
 		}
+	}
+	public void insert(int index ,T value) throws Exception {
+		if(counter<=index) {
+			throw new Exception("Index Out of Bound");
+		}
+		if(arr.length<=this. counter) {  /// if the counter hits the total size of array
+			this.arr=this.transferArray(); // copying all the values from existing array to new larger array
+		}
+		
+		
+		for(int i=counter-1;i>=index;i--) {
+			
+			this.arr[i+1] = this.arr[i];
+//			System.out.println("pushing  values"+this.arr[i]+"("+i+") to next index "+this.arr[i+1]+"("+(i+1)+")");
+		}
+		this.arr[index]=value;
+		this.counter++;
 	}
 }

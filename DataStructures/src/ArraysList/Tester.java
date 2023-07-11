@@ -27,6 +27,10 @@ public class Tester {
 		names.insert("dom");
 		names.insert("lucifer");
 		names.insert("linkon");
+		names.printWithIndex();
+		names.insert(1, "dargo");
+		System.out.println("++++++++++++++++++++++++");
+		names.printWithIndex();
 		names.print();
 	}
 }
