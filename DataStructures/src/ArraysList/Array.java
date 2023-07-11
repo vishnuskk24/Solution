@@ -117,4 +117,17 @@ public class Array<T> {
 		this.arr[index]=value;
 		this.counter++;
 	}
+	public void reverse() {
+		
+	 for(int i=0;i<counter/2;i++) {
+		 
+		 T temp=this.arr[i];
+		 this.arr[i] = this.arr[this.counter-i-1] ;
+		 this.arr[this.counter-i-1] =temp;
+	 }
+	
+	 
+	 
+//	 public
+	}
 }
