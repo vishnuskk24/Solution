@@ -30,8 +30,9 @@ public class Tester {
 		names.printWithIndex();
 		names.insert(1, "dargo");
 		System.out.println("++++++++++++++++++++++++");
+		names.reverse();
 		names.printWithIndex();
-		names.print();
+//		names.print();
 	}
 }
 
@@ -46,3 +47,6 @@ public class Tester {
 // remove last
 //get last elements
 //update method
+// insert in specfic place
+// find max
+// reverse
