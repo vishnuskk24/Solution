@@ -78,3 +78,4 @@ public class Tester {
 //  has loop	
 // make loop   - >  these make loop methos makes linear linked list into an circular liked list
 // break loop-- >  when two upcoming pointers are same then the we need to make the fast or first (pointer that is moving twicee speed )  we need to make it null
+//

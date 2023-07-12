@@ -4,6 +4,7 @@ public class Tester {
 
 	public static void main(String[] args) throws Exception {
 		
+//		System.out.println(5/2);
 //		Array<Integer> numbers = new Array<>(2);
 ////		System.out.println(numbers.size() + " Size");
 //		numbers.insert(5);
@@ -22,11 +23,14 @@ public class Tester {
 //		numbers.print();
 //		System.out.println(numbers.size());
 		
-//		Array<String> names = new Array<>(3);
-//		names.insert("John");
-//		names.insert("dom");
-//		names.insert("lucifer");
+		Array<String> names = new Array<>(3);
+		names.insert("John");
+		names.insert("dom");
+		names.insert("lucifer");
 //		names.insert("linkon");
+		for(Object o:names.getMiddle()) {
+			System.out.println((String)o);
+		}
 //		names.printWithIndex();
 //		names.insert(1, "dargo");
 //		System.out.println("++++++++++++++++++++++++");
@@ -51,3 +55,4 @@ public class Tester {
 // insert in specfic place
 // find max
 // reverse
+// find middle

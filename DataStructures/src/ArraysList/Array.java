@@ -68,6 +68,9 @@ public class Array<T> {
 		}
 		return false;
 	}
+	private boolean isEmpty() {
+		return (counter==0);
+	}
 	
 	public void removeAt(int index) throws Exception {
 		if(index>=this.counter) {
@@ -129,5 +132,25 @@ public class Array<T> {
 	 
 	 
 //	 public
+//	  we are taking the networking session for bench enablement wth abdul and swetha tomorrow we are going to start with layer 2 protocols once these session is completed ill join bench enablement spring for ne and IOT and we  
+	}
+	
+	public T[] getMiddle() {
+		
+		T []value;
+		if(isEmpty()) {
+			
+		}
+		//  allocating the size of array according to the list if the list have add number of element we will return one value else we need to return two values
+		value  = (T[]) new Object[(counter%2==0?2:1)];
+		System.out.println(value.length);
+		if(counter%2==0) {
+			value[0]=this.arr[(counter/2)-1];
+			value[1]=this.arr[(counter/2)];
+		}else {
+			value[0]= this.arr[(counter/2)];
+		}
+		return value;
+				
 	}
 }
