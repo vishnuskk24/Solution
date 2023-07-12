@@ -62,23 +62,16 @@ public class Linkedlist<T> {
 			n=n.next;
 		}
 	}
-	public Integer indexOf(T value) throws Exception {
-		if(isEmpty()) {
-			throw new Exception("List is Empty");
-		}
+	public Integer indexOf(T value){
 		Node n=head;
 		int i=0;
 //		System.out.println(head.value);
-		while(true) {
+		while(n!=null) {
 			if(n.value.equals(value)) {
 				return i;
 			}
-			if(n.next==null) {
-				break;
-			}
-			
 			n=n.next;
-			i++;
+			i++;	
 		}
 		return -1;
 	}
@@ -129,24 +122,30 @@ public class Linkedlist<T> {
 		
 	}
 	
-	public boolean contains(T value) {
+	public boolean contains(T value)  {
 		
-		if(isEmpty()) {
-			return false;
-		}
-		Node v= head;
-		while(true) {
-			
-			if(value.equals(v.value)) {
-				return true;
-			}
-			if(v.next==null) {
-			break;
-			}
-			v=v.next;
-		}
 		
-		return false;
+		
+		return indexOf(value)!=-1;   // simplified manner
+		
+//		if(isEmpty()) {
+//			return false;
+//		}
+		
+		
+//		Node v= head;
+//		while(true) {
+//			
+//			if(value.equals(v.value)) {
+//				return true;
+//			}
+//			if(v.next==null) {
+//			break;
+//			}
+//			v=v.next;
+//		}
+//		
+//		return false;
 		
 		
 	}

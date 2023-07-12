@@ -46,13 +46,14 @@ public class Tester {
 //			LinkedList<Integer> il;
 //			
 //		}
-		l.printWithIndex();
-		System.out.println(l.isLooped());
-		l.makeLoop();
-		System.out.println(l.isLooped());
-		l.breakLoop();
-		System.out.println(l.isLooped());
-		l.printWithIndex();
+		System.out.println(l.contains(1000));
+//		l.printWithIndex();
+//		System.out.println(l.isLooped());
+//		l.makeLoop();
+//		System.out.println(l.isLooped());
+//		l.breakLoop();
+//		System.out.println(l.isLooped());
+//		l.printWithIndex();
 		
 		
 //		System.out.println(l.isLooped());
