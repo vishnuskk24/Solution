@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.NoSuchElementException;
+
 public class Linkedlist<T> {
 
 	private class Node{
@@ -18,6 +20,18 @@ public class Linkedlist<T> {
 	private boolean isEmpty() {
 		return head==null;
 	}
+	private Node getPrevious(Node n) {
+		
+		var current = head;
+		while(current!=null) {
+			if(current.next.equals(n)) {
+				return n;
+			}
+		}
+		
+		return null;
+	}
+	
 	public void addFirst(T value) {
 		var n = new Node(value);
 		
@@ -171,32 +185,44 @@ public class Linkedlist<T> {
 	}
 	public void removeFirst() {
 		if(isEmpty()) {
+//			throw new NoSuchElementException();
 			return;// you can throw exception depends on requirmentss
 		}
-		
-		head=head.next;
-//		head.next=null;
-	}
-	public void removeLast() throws Exception {
-		
-		if(isEmpty()) {
-			throw new Exception("List is empty");
-		}
-		
 		if(head.equals(tail)) {
 			head=tail=null;
 			return;
 		}
+		Node second=head.next;
+		head.next=null;      //  breaking the first node link for garbage collector to collect the waste object
+		head=second;
+//		head=head.next;
+//		head.next=null;
+	}
+	
+	public void removeLast() throws Exception {
 		
-		Node n = head;
-		while(true) {
-			if(n.next.next==null) {
-				n.next=null;
-				break;
-			}
-			n=n.next;
-			
+		if(isEmpty()) { // no elements
+			throw new NoSuchElementException();
 		}
+		
+		if(head.equals(tail)) { // only one element
+			head=tail=null;
+			return;
+		}
+		
+		var secondLast = getPrevious(tail);   // removing last node by defining one method to get second last node  
+		tail=secondLast;                      // we can use these approach becoz we can use getprevious method  in future to manipulate the nodes in our linked list
+		secondLast.next=null;
+		
+//		Node n = head;
+//		while(true) {                         // or we can iterate till the second last  in these method to remove the last node 
+//			if(n.next.next==null) {
+//				n.next=null;
+//				break;
+//			}
+//			n=n.next;
+//			
+//		}
 	}
 	
 	public T[] toArray() {

@@ -36,6 +36,8 @@ public class Tester {
 		l.addlast(90);
 		l.addlast(100);
 		l.printWithIndex();
+		l.removeFirst();
+		l.printWithIndex();
 //		l.removeLast();
 //		l.printWithIndex();
 		
@@ -46,7 +48,7 @@ public class Tester {
 //			LinkedList<Integer> il;
 //			
 //		}
-		System.out.println(l.contains(1000));
+//		System.out.println(l.contains(1000));
 //		l.printWithIndex();
 //		System.out.println(l.isLooped());
 //		l.makeLoop();
