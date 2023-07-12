@@ -25,8 +25,9 @@ public class Linkedlist<T> {
 		var current = head;
 		while(current!=null) {
 			if(current.next.equals(n)) {
-				return n;
+				return current;
 			}
+			current=current.next;
 		}
 		
 		return null;
@@ -206,11 +207,13 @@ public class Linkedlist<T> {
 		}
 		
 		if(head.equals(tail)) { // only one element
+//			System.out.println("head e tail");
 			head=tail=null;
 			return;
 		}
-		
-		var secondLast = getPrevious(tail);   // removing last node by defining one method to get second last node  
+//		System.out.println("execting line 213");
+		var secondLast = getPrevious(tail);   // removing last node by defining one method to get second last node
+//		System.out.println("printing second last value " + secondLast.value);
 		tail=secondLast;                      // we can use these approach becoz we can use getprevious method  in future to manipulate the nodes in our linked list
 		secondLast.next=null;
 		
@@ -315,5 +318,92 @@ public class Linkedlist<T> {
 			i++;
 		}
 		return false;
+	}
+	
+	public void addBefore(int index ,T value) {
+	
+		
+		if(index>size()) {
+			throw new IllegalArgumentException("can't add before " + index + "because we have only " + ((size())-1) + " are present in our list");
+		}
+		if(index==0) {
+			addFirst(value); // only one element present
+			return;
+		}
+//		1   2  3 4  5        3 25
+//		0   1  2 3  4
+//		10 20 30 40 50
+		var n = head;
+		for(int i=1;i<index-1;i++) {
+			
+		System.out.println(i);
+		n=n.next;
+		
+		}
+		var newNode = new Node(value);
+		newNode.next=n.next; // inserting the new node after the previous position   20 -> 25
+		n.next=newNode;     // connecting the new node to the next node  25 - > 30
+		
+		
+	}
+	
+	
+	private Node getNode(int index) {
+		Node n=head;
+		if(index==0) {
+			return head;
+		}
+		
+		for(int i=0;i<index;i++) {
+			n=n.next;
+			if(i==index) {
+				break;
+			}
+		}
+		
+		
+		return n;
+	}
+	public void addAfter(int index , T value) {
+		if(index>size())
+		{
+			throw new IllegalArgumentException("can't add before " + index + "because we have only " + ((size())-1) + " are present in our list");
+		}
+		var n=tail;
+		if(index==size()-1) {
+			
+			
+			addlast(value);
+			return;
+		}
+		else {
+			n = getNode(index);
+			var  newNode = new Node(value);
+			newNode.next=n.next;
+			n.next=newNode;
+		}
+		
+		
+		
+	}
+	
+	public void deleteNode(int index) throws Exception {
+		if(index>=size()) {
+			throw new IllegalArgumentException();
+		}
+		
+		if(index==0) {
+			removeFirst();
+			return;
+		}
+		if(index ==size()-1) {
+//			System.out.println("removing last node");
+			removeLast();
+			return;
+		}
+		var prev = getPrevious(getNode(index));
+		var current = prev.next;
+		prev.next = current.next;
+		current.next=null;
 	}
 }

@@ -30,13 +30,17 @@ public class Tester {
 		l.addlast(30);
 		l.addlast(40);
 		l.addlast(50);
-		l.addlast(60);
-		l.addlast(70);
-		l.addlast(80);
-		l.addlast(90);
-		l.addlast(100);
-		l.printWithIndex();
-		l.removeFirst();
+//		l.addlast(60);
+//		l.addlast(70);
+//		l.addlast(80);
+//		l.addlast(90);
+//		l.addlast(100);
+//		l.printWithIndex();
+//		l.removeFirst();
+//		l.addAfter(2, 45);
+//		System.out.println(l.size());
+		l.deleteNode(0);
+//		l.removeLast();
 		l.printWithIndex();
 //		l.removeLast();
 //		l.printWithIndex();
@@ -81,4 +85,9 @@ public class Tester {
 //  has loop	
 // make loop   - >  these make loop methos makes linear linked list into an circular liked list
 // break loop-- >  when two upcoming pointers are same then the we need to make the fast or first (pointer that is moving twicee speed )  we need to make it null
+
+//  need to implement
+// insertion before given noe done
+// inseration after given node done
+// delete the given node according to index
 //
