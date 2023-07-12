@@ -9,6 +9,7 @@ public class Linkedlist<T> {
 		private Node(T value) {
 			this.value=value;
 		}
+		
 	}
 	
 	private Node head;
@@ -218,4 +219,76 @@ public class Linkedlist<T> {
 			
 		}
 	
+	public T[] getMiddle() {
+		Node first = head;
+		Node second =head;
+		
+		T[] resp = (T[] ) new Object[2];
+		
+		if(isEmpty()) {
+			return null; // if the list isempty
+		}
+		
+		while((first!=null &&first.next!=null)) {
+			
+			if(first.next.next==null) {
+				resp[0]=second.value;
+				resp[1] =second.next.value; 
+			}else {
+				resp[0]=second.next.value;
+			}
+			
+			first = first.next.next; // moving the first pointer twice
+			second=second.next;//  moving second pointer one step
+		}
+//		when  the first reaches the last at the time the second will be in middle of the linked list
+		
+		return resp;
+
+	}
+	public void makeLoop() {
+		tail.next=head;
+	}
+	public void breakLoop() {
+		if(isEmpty()) return ;
+		Node first = head;
+		Node second =head;
+		int i=0;
+		while((first.next!=null && first.next.next!=null)) {
+//			System.out.println(i);
+		
+			if( i!=0 &&((Integer)first.next.next.hashCode()).equals((Integer)second.next.hashCode())) {
+//				System.out.println(first.hashCode()+"\n"+second.hashCode());
+//				System.out.println(first.value + " " +second.value);
+				
+				first.next.next=null;
+				return ;
+			}
+			
+			first=first.next.next;
+			second=second.next;
+			i++;
+		}
+		
+	}
+	
+	public boolean isLooped() {
+		if(isEmpty()) return false;
+		Node first = head;
+		Node second =head;
+		int i=0;
+		while((first.next!=null && first.next.next!=null)) {
+		
+			if( i!=0 &&((Integer)first.hashCode()).equals((Integer)second.hashCode())) {
+//				System.out.println(first.hashCode()+"\n"+second.hashCode());
+//				System.out.println(first.value + " " +second.value);
+				return true;
+			}
+			
+			first=first.next.next;
+			second=second.next;
+			i++;
+		}
+		return false;
+	}
 }
