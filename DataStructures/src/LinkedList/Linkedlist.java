@@ -202,30 +202,30 @@ public class Linkedlist<T> {
 	
 	public void removeLast() throws Exception {
 		
-//		if(isEmpty()) { // no elements
-//			throw new NoSuchElementException();
-//		}
-//		
-//		if(head.equals(tail)) { // only one element
-////			System.out.println("head e tail");
-//			head=tail=null;
-//			return;
-//		}
-////		System.out.println("execting line 213");
-//		var secondLast = getPrevious(tail);   // removing last node by defining one method to get second last node
-////		System.out.println("printing second last value " + secondLast.value);
-//		tail=secondLast;                      // we can use these approach becoz we can use getprevious method  in future to manipulate the nodes in our linked list
-//		secondLast.next=null;
-		
-		Node n = head;
-		while(true) {                         // or we can iterate till the second last  in these method to remove the last node 
-			if(n.next.next==null) {
-				n.next=null;
-				break;
-			}
-			n=n.next;
-			
+		if(isEmpty()) { // no elements
+			throw new NoSuchElementException();
 		}
+		
+		if(head.equals(tail)) { // only one element
+//			System.out.println("head e tail");
+			head=tail=null;
+			return;
+		}
+//		System.out.println("execting line 213");
+		var secondLast = getPrevious(tail);   // removing last node by defining one method to get second last node
+//		System.out.println("printing second last value " + secondLast.value);
+		tail=secondLast;                      // we can use these approach becoz we can use getprevious method  in future to manipulate the nodes in our linked list
+		secondLast.next=null;
+		
+//		Node n = head;
+//		while(true) {                         // or we can iterate till the second last  in these method to remove the last node 
+//			if(n.next.next==null) {
+//				n.next=null;
+//				break;
+//			}
+//			n=n.next;
+//			
+//		}
 	}
 	
 	public T[] toArray() {
