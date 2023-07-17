@@ -65,6 +65,18 @@ public class Stack<T> {
 		}
 	}
 	
+	public void printInLine() {
+		if(isEmpty()) {
+			return;
+		}
+		
+		var current=top;
+		while( current!=null) {
+			System.out.print(current.value+ " ");
+			current=current.next;
+					
+		}
+	}
 	public void printWithIndex() {
 		if(isEmpty()) {
 			return;
@@ -83,8 +95,27 @@ public class Stack<T> {
 	
 	public Integer search(T value) {
 		
+		
+		
+		var current = top;
+		int i=0;
+		while(current!=null) {
+			
+			if(current.value.equals(value)) {
+					return i;
+			}
+			i++;
+			current = current.next;
+			
+		}
+		
+		
 		return -1;  // if value is not present
 		
+	}
+	
+	public boolean isPresent(T value) {
+		return -1!=search(value);
 	}
 }
 

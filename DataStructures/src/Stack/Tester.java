@@ -15,9 +15,13 @@ public class Tester {
 //		System.out.println(s.peek());
 		s.pop(); // pop opertion is also working
 		s.printWithIndex();
+		System.out.println(s.isPresent(10));
+		System.out.println(s.search(10));  // it wil return index
+//		System.out.println(s.isEmpty()); //  done
 		
-		System.out.println(s.isEmpty()); //  done
 		
+		// these file will test the methods
+//		 in another file we will solve the prblms 
 		
 		
 
