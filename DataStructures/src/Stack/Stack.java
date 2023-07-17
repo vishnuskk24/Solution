@@ -72,7 +72,7 @@ public class Stack<T> {
 		
 		var current=top;
 		while( current!=null) {
-			System.out.print(current.value+ " ");
+			System.out.print(current.value);
 			current=current.next;
 					
 		}
