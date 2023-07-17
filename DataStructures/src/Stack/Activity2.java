@@ -63,20 +63,22 @@ public class Activity2 {
 				}
 			}
 		}
-		if(stack.isEmpty()) {
-			return true;
-		}else {
-			return false;
-		}
-		//return flag;
 		
-		
-//		return true;
+		return stack.isEmpty();
+//		if(stack.isEmpty()) {
+//			return true;
+//		}else {
+//			return false;
+//		}
+//		//return flag;
+//		
+//		
+////		return true;
 	}
 	
 	public static void main(String[] args){
 		
-		String input = "(1(<12[]>){}){[}]";
+		String input = "(";//"(1(<12[]>){}){[}]";
 		if(isBalanced(input)) {
 			System.out.println("statement is balanced");
 			
@@ -86,4 +88,10 @@ public class Activity2 {
 		
 		
 	}
+	
+	// kth node in linked list 
+//	 // reverse the linked list
+	//implement full doubly linked list
+	// implement twostacks in one array
+	// find minimum value in stack
 }
