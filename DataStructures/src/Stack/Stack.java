@@ -32,15 +32,17 @@ public class Stack<T> {
 		
 		
 	}
-	public  void  pop() {
+	public  T  pop() {
 		
 		
 		if(isEmpty()) {
-			return;
+			return null;
 		}
+		
 		 var temp = top;
 		 top=top.next;
 		 temp.next=null;
+		 return temp.value;
 		 
 	}
 	
@@ -117,6 +119,7 @@ public class Stack<T> {
 	public boolean isPresent(T value) {
 		return -1!=search(value);
 	}
+	
 }
 
 
