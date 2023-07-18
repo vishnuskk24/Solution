@@ -120,6 +120,58 @@ public class Stack<T> {
 		return -1!=search(value);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public T min() throws Exception { 
+		
+		if(isEmpty()) {
+			throw new Exception("List is Empty can't find minimum value");
+		}
+		var min = top.value;
+		if(top.value instanceof Integer || top.value instanceof Double ||top.value instanceof Long ||top.value instanceof Integer ||top.value instanceof Float ||top.value instanceof Short) {
+			
+			
+			
+			var current = top;
+			
+			while(current!=null) {
+				
+				if(top.value instanceof Integer && (Integer) min >  (Integer)current.value) {
+					min=current.value;
+					
+				}else if(top.value instanceof Double && (Double) min >  (Double)current.value) {
+					min=current.value;
+				}
+				else if(top.value instanceof Float && (Float) min >  (Float)current.value) {
+					min=current.value;
+				}
+				else if(top.value instanceof Long && (Long) min >  (Long)current.value) {
+					min=current.value;
+				}
+				else if(top.value instanceof Short && (Short) min >  (Short)current.value) {
+					min=current.value;
+				}
+					
+					current=current.next;
+			}
+			
+		}
+		if(top.value instanceof String) {// these min will work  based in string length  || we can modify according to alphabetic order
+			if(isEmpty()) {
+				throw new Exception("List is Empty can't find minimum value");
+			}
+			String minimum = new String((String) top.value);
+			var current  = top;
+			while(current!=null) {
+				if(current.value.toString().length()<minimum.length()) {
+					minimum = (String) current.value;
+				}
+				current=current.next;
+			}
+			return (T) minimum;
+		}
+		return min;
+	}
+	
 }
 
 
