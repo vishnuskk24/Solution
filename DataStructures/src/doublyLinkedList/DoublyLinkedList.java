@@ -321,7 +321,7 @@ public class DoublyLinkedList <T>{
 		checkEmpty();
 		var current=head;
 		int i=0;
-		while(current!=null) {
+		while(current.next!=null) {
 			
 			if(i==index) {
 				return current.value;
@@ -332,6 +332,23 @@ public class DoublyLinkedList <T>{
 		throw new IndexOutOfBoundsException();
 		
 	}
+	public void setElement(int index,T value ) {
+		checkEmpty();
+		var current= head;
+		int i = 0;
+		while(index>=0 &&current!=null) {
+			
+			if(i==index) {
+				current.value=value;
+				return;
+			}
+			i++;
+			current=current.next;
+		}
+		throw new IndexOutOfBoundsException();
+		
+	}
+	
 //	Opeartions neeed to perform
 	
 //	isEmpty
@@ -350,6 +367,7 @@ public class DoublyLinkedList <T>{
 //	hasLoop->
 //	makeLoop->
 //	BreakLoop->
+//	setElement
 //	addBefore
 //	addAfter
 //	deleteNode // deleting the value according to the index

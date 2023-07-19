@@ -10,20 +10,23 @@ public class Tester {
 //		list.addFirst(20);
 //		list.addFirst(30);
 //		list.addFirst(40);
-		System.out.println(list.get(2));
+//		System.out.println(list.get(2));
 		list.addLast(10);	
 		list.addLast(20);
 		list.addLast(30);
-//		list.addLast(40);
-//		list.addLast(50);
+		list.addLast(40);
+		list.addLast(50);
+		list.printWithIndex();
+		list.setElement(4, 55);
+		list.printWithIndex();
 //		list.addLast(10);
-		list.printWithIndex();
-		list.makeLoop();
-		System.out.println("checking has loop");
-		System.out.println(list.hasLoop());
-		list.breakLoop();
-		System.out.println(list.hasLoop());
-		list.printWithIndex();
+//		list.printWithIndex();
+//		list.makeLoop();
+//		System.out.println("checking has loop");
+//		System.out.println(list.hasLoop());
+//		list.breakLoop();
+//		System.out.println(list.hasLoop());
+//		list.printWithIndex();
 		
 //		list.print();
 //		for(Object o : list.getMiddle()) {
@@ -69,5 +72,6 @@ public class Tester {
 //hasloop
 //makeloop
 //breakLoop
+//setElement
 
 
