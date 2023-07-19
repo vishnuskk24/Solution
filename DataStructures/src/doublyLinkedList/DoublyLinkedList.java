@@ -317,6 +317,21 @@ public class DoublyLinkedList <T>{
 			
 		}
 	}
+	public T get(Integer index) {
+		checkEmpty();
+		var current=head;
+		int i=0;
+		while(current!=null) {
+			
+			if(i==index) {
+				return current.value;
+			}
+			i++;
+			current=current.next;
+		}
+		throw new IndexOutOfBoundsException();
+		
+	}
 //	Opeartions neeed to perform
 	
 //	isEmpty
