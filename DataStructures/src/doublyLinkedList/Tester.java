@@ -16,10 +16,20 @@ public class Tester {
 		list.addLast(30);
 		list.addLast(40);
 		list.addLast(50);
-		list.print();
+		list.addLast(10);
+//		list.print();
 		list.printWithIndex();
-		list.reverse();
+//		list.reverse();
+//		System.out.println(list.indexOf(100));
+//		System.out.println(list.count(200));
+//		System.out.println(list.contains(100));
+		
+	for(Integer a :list.getIndexes(10)) {
+		
+		System.out.println(a);
 	}
+	}
+	
 }
 
 //Completed:
@@ -28,4 +38,7 @@ public class Tester {
 //Printwith index
 //reverse    - > we can iterate the value value from reverse also becoz our tail have last node ref  that last node have their previous node reference
 //addlast 
+//contains
+//indexOf
+// count 
 

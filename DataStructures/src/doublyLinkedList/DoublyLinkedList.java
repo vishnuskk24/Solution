@@ -1,5 +1,7 @@
 package doublyLinkedList;
 
+import ArraysList.Array;
+
 public class DoublyLinkedList <T>{
 
 	
@@ -98,8 +100,60 @@ public class DoublyLinkedList <T>{
 		
 	}
 	
+	public Integer indexOf(T value) {
+		var current=head;
+		int i=0;
+		while(current!=null) {
+//			System.out.println("inside while " + i);
+			if(current.value.equals(value)) {
+				return i;
+			}
+			i++;
+			current=current.next;
+		}
+		
+		
+		
+		return -1;
+	}
 	
-	
+	public boolean contains(T value) {
+		
+		return -1!=indexOf(value);
+	}
+	public int count(T value) {
+		int i=0;
+		var current =head;
+		
+		while(current!=null) {
+			if(value.equals(current.value)) {
+				i++;
+			}
+			current=current.next;
+		}
+		
+		return i;
+	}
+	public Integer[] getIndexes(T value){
+		Integer[] result;
+//		if(isEmp)
+		var current = head;
+		Array<Integer> index = new Array<Integer>();
+		int i=0;
+		while(current!=null) {
+			
+			if(value.equals(current.value)) {
+				System.out.println("indexes = >"+i);
+				index.insert(i);
+			}
+			i++;
+			current=current.next;
+			
+		}
+		
+		result=index.toArray();
+		return result;
+	}
 	
 	
 	

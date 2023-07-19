@@ -12,6 +12,11 @@ public class Array<T> {
 	arr=(T[])new Object[size];
 	
 	}
+	public Array() {
+		
+		arr=(T[])new Object[10];
+		
+		}
 	public int size() {
 		return this.counter;
 	}
@@ -152,5 +157,20 @@ public class Array<T> {
 		}
 		return value;
 				
+	}
+	
+	
+	public T[] toArray() {
+		if(size()==0) {
+			return null;
+		}
+		T[] resp  =(T[]) new Object[size()];
+		int i=0;
+		for(T a:arr) {
+			resp[i]=a;
+			i++;
+		}
+		
+		return resp;
 	}
 }
