@@ -300,7 +300,7 @@ public class DoublyLinkedList <T>{
 			
 			var fast = head;
 			var slow = head; 
-			int i=0 ; //  thes it switch to skip the iteration
+			int i=0 ; //  these it switch to skip the iteration
 			while(fast.next!=null&& fast.next.next!=null) {
 				if(((Integer)fast.hashCode()).equals((Integer)slow.hashCode())) {
 					
@@ -349,6 +349,16 @@ public class DoublyLinkedList <T>{
 		
 	}
 	
+	public void addBefore() {
+		
+		
+	}
+	public void addAfter() {
+		
+	}
+	public void deleteNode() {
+		
+	}
 //	Opeartions neeed to perform
 	
 //	isEmpty
