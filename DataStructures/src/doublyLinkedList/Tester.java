@@ -17,13 +17,19 @@ public class Tester {
 //		list.addLast(40);
 //		list.addLast(50);
 //		list.addLast(10);
-		
+		list.printWithIndex();
+		list.makeLoop();
+		System.out.println("checking has loop");
+		System.out.println(list.hasLoop());
+		list.breakLoop();
+		System.out.println(list.hasLoop());
+		list.printWithIndex();
 		
 //		list.print();
-		for(Object o : list.getMiddle()) {
-			System.out.println(o);
-		}
-		list.printWithIndex();
+//		for(Object o : list.getMiddle()) {
+//			System.out.println(o);
+//		}
+//		list.printWithIndex();
 		
 //		list.removeFirst();
 //		list.removeLast();
@@ -58,6 +64,10 @@ public class Tester {
 //size
 //to array
 //removefirst
+//getMiddle();
 //removelast
+//hasloop
+//makeloop
+//breakLoop
 
 

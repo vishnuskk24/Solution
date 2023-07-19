@@ -251,7 +251,73 @@ public class DoublyLinkedList <T>{
 		}
 		return ret;
 	}
-//	Opertions neeed to perform
+	public boolean hasLoop() {
+//		System.out.println("inside has loop");
+		checkEmpty();
+//		System.out.println("not empty line 257");
+	
+		var fast =  head;
+		var slow=head;
+//		System.out.println("before while in has loop 264");
+		System.out.println();
+		int i=0;
+//		System.out.println((fast.next!=null) + " " + (fast.next.next!=null));
+		while( (fast.next!=null && fast.next.next!=null)) {
+			///System.out.println(fast.value + " -->" + fast.value);
+//			i!=0  we are mentioning becoz in first iteration both pointer points same node i,e head so we need o skip that node
+			if(i!=0 && fast.hashCode()==(slow.hashCode())) {
+				
+				//System.out.println((fast.hashCode() + "   " + slow.hashCode()));
+				return true;
+			}
+			slow=slow.next;
+			fast=fast.next.next;
+			i++;
+		//	System.out.println(fast.value + " -->" + fast.value);
+					
+		}
+		return false;
+		
+		
+	}
+	
+	public void makeLoop() {
+		checkEmpty();
+		var current  = head;
+		while(current.next!=null) {
+			
+			System.out.println(current.value);
+			
+			current =current.next; // locating last element 
+		}
+		current.next=head; // connecting single link from tail to head
+		head.previous=current;// connecting the second link  from head to tail
+		System.out.println("method over");
+	}
+	
+	public void breakLoop() {
+		if(hasLoop()) {
+			
+			var fast = head;
+			var slow = head; 
+			int i=0 ; //  thes it switch to skip the iteration
+			while(fast.next!=null&& fast.next.next!=null) {
+				if(((Integer)fast.hashCode()).equals((Integer)slow.hashCode())) {
+					
+					System.out.println(fast.value);
+					var temp=fast.previous;
+					temp.next=null;
+					fast.previous=null;
+					break;
+				}
+				fast  =fast.next.next;
+				slow=slow.next;
+				i++;
+			}
+			
+		}
+	}
+//	Opeartions neeed to perform
 	
 //	isEmpty
 	//addFirst
@@ -265,10 +331,10 @@ public class DoublyLinkedList <T>{
 //	removeFirst->
 //	removerLast->
 //	toArray ->
-//	getMiddle
-//	hasLoop
-//	makeLoop
-//	BreakLoop
+//	getMiddle-> 
+//	hasLoop->
+//	makeLoop->
+//	BreakLoop->
 //	addBefore
 //	addAfter
 //	deleteNode // deleting the value according to the index

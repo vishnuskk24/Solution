@@ -25,23 +25,25 @@ public class Tester {
 //		System.out.println(l.contains(100) );
 //		System.out.println(l.size());
 		
-		l.addFirst(10);
-		l.addlast(20);
+//		l.addFirst(10);
+//		l.addlast(20);
 		l.addlast(30);
 		l.addlast(40);
 		l.addlast(50);
-		l.addlast(60);
-		l.addlast(70);
-		l.addlast(80);
-		l.addlast(90);
-		l.addlast(100);
-		l.printWithIndex();
-		l.removeFirst();
-		l.addAfter(2, 45);
-//		System.out.println(l.size());
-		l.deleteNode(0);
+		l.makeLoop();
+		System.out.println(l.isLooped());
+//		l.addlast(60);
+//		l.addlast(70);
+//		l.addlast(80);
+//		l.addlast(90);
+//		l.addlast(100);
+//		l.printWithIndex();
+//		l.removeFirst();
+//		l.addAfter(2, 45);
+////		System.out.println(l.size());
+//		l.deleteNode(0);
 //		l.removeLast();
-		l.printWithIndex();
+//		l.printWithIndex();
 //		l.removeLast();
 //		l.printWithIndex();
 		
