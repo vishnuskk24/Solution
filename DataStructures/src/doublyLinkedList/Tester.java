@@ -17,9 +17,12 @@ public class Tester {
 		list.addLast(40);
 		list.addLast(50);
 		list.printWithIndex();
-		list.addAfter(1, 25);
+//		list.addBefore(1, 15);
+		list.deleteNode(2);
+//		list.addAfter(1, 25);
 //		list.setElement(4, 55);
 		list.printWithIndex();
+		list.reverse();
 //		list.addLast(10);
 //		list.printWithIndex();
 //		list.makeLoop();
@@ -74,5 +77,8 @@ public class Tester {
 //makeloop
 //breakLoop
 //setElement
+// addAfter
+//addBefore
+
 
 

@@ -377,7 +377,7 @@ public class DoublyLinkedList <T>{
 		var current = head;
 		int i=0;
 		while(current!=null) {
-			System.out.println(i);
+//			System.out.println(i);
 			if(i==index) {
 				
 				Node n = new Node(value);
@@ -393,8 +393,27 @@ public class DoublyLinkedList <T>{
 		throw new IndexOutOfBoundsException();
 		
 	}
-	public void deleteNode() {
+	public void deleteNode(int index) {
+		checkEmpty();
+		var current  = head;
+		int i=0;
+		while(current!=null) {
+			
+			if(i==index) {
+				current.next.previous=current.previous;
+				current.previous.next = current.next;
+				current.previous=null;
+				current.next=null;
+				return;
+//				
+//				return;
+				
+			}
+			
+			current = current.next;i++;
+		}
 		
+		throw new IndexOutOfBoundsException();
 	}
 //	Opeartions neeed to perform
 	
