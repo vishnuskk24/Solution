@@ -1,6 +1,8 @@
 package doublyLinkedList;
 
-import ArraysList.Array;
+import java.util.NoSuchElementException;
+
+;
 
 public class DoublyLinkedList <T>{
 
@@ -135,28 +137,66 @@ public class DoublyLinkedList <T>{
 		return i;
 	}
 	public Integer[] getIndexes(T value){
-		Integer[] result;
+		
 //		if(isEmp)
 		var current = head;
-		Array<Integer> index = new Array<Integer>();
+		Integer[] index = new Integer[count(value)];
 		int i=0;
+		int e=0;
 		while(current!=null) {
 			
 			if(value.equals(current.value)) {
+				
 				System.out.println("indexes = >"+i);
-				index.insert(i);
+				index[i]=e;
+				i++;
 			}
-			i++;
+			e++;
 			current=current.next;
 			
 		}
 		
-		result=index.toArray();
-		return result;
+		return index;
+	}
+	public Integer size() {
+		int size=0;
+		var current =head;
+		while (current!=null)
+		{
+			size++;
+			current = current.next;
+		}
+		return size;
+	}
+	public T[] toArray() {
+//	System.out.println("douby LL to array");
+		T[] ret  = (T[]) new Object[size()];
+//		System.out.println("line 172");
+		var current = head;
+		int i=0;
+//		System.out.println("before ehile");
+		while(current!=null) {
+//			System.out.println("insde while");
+			
+			ret[i]=current.value;
+			current = current.next;
+			i++;
+		}
+//		System.out.println("after while");
+		
+		return ret;
 	}
 	
 	
-	
+	public void removeFirst() {
+		if(isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		var temp = head; // taking head as a copy to disconnect the link to next node
+		head=head.next; // making second element to the first element
+		head.previous=null;  //disconnecting the link from head tto the removing element
+		temp.previous=null; // discnnecting the link from removing element to first element 
+	}
 	
 //	Opertions neeed to perform
 	
@@ -164,14 +204,14 @@ public class DoublyLinkedList <T>{
 	//addFirst
 	//	Addlast
 	// print
-//	printWithIndex
-//	indexOf
-//	count
-//	contains
-//	size
+//	printWithIndex->
+//	indexOf->
+//	count->
+//	contains->
+//	size->
 //	removeFirst
 //	removerLast
-//	toArray
+//	toArray ->
 //	getMiddle
 //	hasLoop
 //	makeLoop

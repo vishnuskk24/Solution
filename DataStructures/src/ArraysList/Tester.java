@@ -28,8 +28,11 @@ public class Tester {
 		names.insert("dom");
 		names.insert("lucifer");
 //		names.insert("linkon");
-		for(Object o:names.getMiddle()) {
-			System.out.println((String)o);
+//		for(Object o:names.getMiddle()) {
+//			System.out.println((String)o);
+//		}
+		for(Object	 s: names.toArray()) {
+			System.out.println(s);
 		}
 //		names.printWithIndex();
 //		names.insert(1, "dargo");
