@@ -17,7 +17,8 @@ public class Tester {
 		list.addLast(40);
 		list.addLast(50);
 		list.printWithIndex();
-		list.setElement(4, 55);
+		list.addAfter(1, 25);
+//		list.setElement(4, 55);
 		list.printWithIndex();
 //		list.addLast(10);
 //		list.printWithIndex();

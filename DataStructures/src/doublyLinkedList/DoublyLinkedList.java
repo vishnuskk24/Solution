@@ -349,11 +349,48 @@ public class DoublyLinkedList <T>{
 		
 	}
 	
-	public void addBefore() {
+	public void addBefore(int index,T value) {
 		
-		
+		checkEmpty();
+		var current = head;
+		int i=1;
+		while(current!=null) {
+			System.out.println(i);
+			if(i==index) {
+				
+				Node n = new Node(value);
+				var nextElement = current.next;
+				current.next=n;
+				n.next = nextElement;
+				nextElement.previous=n;
+				n.previous=current;
+				return;
+			}
+			current=current.next;i++;
+		}
+		throw new IndexOutOfBoundsException();
 	}
-	public void addAfter() {
+	public void addAfter(int index,T value) {
+		
+	
+		checkEmpty();
+		var current = head;
+		int i=0;
+		while(current!=null) {
+			System.out.println(i);
+			if(i==index) {
+				
+				Node n = new Node(value);
+				var nextElement = current.next;
+				current.next=n;
+				n.next = nextElement;
+				nextElement.previous=n;
+				n.previous=current;
+				return;
+			}
+			current=current.next;i++;
+		}
+		throw new IndexOutOfBoundsException();
 		
 	}
 	public void deleteNode() {
