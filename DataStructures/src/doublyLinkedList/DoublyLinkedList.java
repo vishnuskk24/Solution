@@ -6,10 +6,11 @@ public class DoublyLinkedList <T>{
 	private class Node{
 		private Node previous;
 		T value;
-		private Node Next;
+		private Node next;
 		public Node(T value) {
 			this.value=value;
 		}
+		
 		
 	}
 	
@@ -28,11 +29,37 @@ public class DoublyLinkedList <T>{
 		return head==null;
 	}
 	
-	public void addFirst() {
+	public void addFirst(T value) {
+		Node node = new Node(value);
 		if(isEmpty()) {
 			// no Node is present 
-			
+		 // first node is created  place these first node in head and both tail
+			head=tail=node;
+			return;
 		}
+		// if some node is already Exist
+		var temp =head;
+		head =node;
+		head.next=temp;
+		temp.previous=head;
+		
+	}
+	public void print() {
+		if(isEmpty()) {// if  no node is present
+			System.out.println("[]");
+			return;
+		}
+		
+		var current=head;
+		System.out.print("[");
+		while(current!=null) {
+			if(current.next==null) { System.out.print(current.value);}
+			else System.out.print(current.value+",");
+			
+		current=current.next;
+		}	System.out.print("]");
+			
+		
 	}
 	
 	
