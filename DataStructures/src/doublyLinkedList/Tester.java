@@ -13,18 +13,21 @@ public class Tester {
 		
 		list.addLast(10);	
 		list.addLast(20);
-//		list.addLast(30);
+		list.addLast(30);
 //		list.addLast(40);
 //		list.addLast(50);
 //		list.addLast(10);
 		
 		
 //		list.print();
+		for(Object o : list.getMiddle()) {
+			System.out.println(o);
+		}
 		list.printWithIndex();
 		
-		list.removeFirst();
-		list.removeLast();
-		list.printWithIndex();
+//		list.removeFirst();
+//		list.removeLast();
+//		list.printWithIndex();
 //		list.reverse();
 //		System.out.println(list.indexOf(100));
 //		System.out.println(list.count(200));

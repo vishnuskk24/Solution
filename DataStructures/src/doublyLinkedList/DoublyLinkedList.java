@@ -221,6 +221,36 @@ public class DoublyLinkedList <T>{
 		temp.previous=null;// disconnetcing the the last element and second last element
 				
 	}
+	
+	public T[] getMiddle() {
+		checkEmpty();
+		T[] ret = (T[])new  Object[size()%2==0?2:1];
+		if(size()==1) {
+			
+			ret[0]=head.value;
+			return ret;
+		}
+		if(size()==2) {
+			ret[0]=head.value;
+			ret[1]=head.next.value;
+			return ret;
+		}
+		
+		var fast=head;
+		var slow = head;
+		while((fast!=null && fast.next!=null)) {
+			
+			fast=fast.next.next;
+			slow=slow.next;
+		}
+		if(size()%2==0) {
+			ret[0]=slow.value;
+			ret[1]=slow.next.value;
+		}else {
+			ret[0] = slow.value;
+		}
+		return ret;
+	}
 //	Opertions neeed to perform
 	
 //	isEmpty
@@ -232,8 +262,8 @@ public class DoublyLinkedList <T>{
 //	count->
 //	contains->
 //	size->
-//	removeFirst
-//	removerLast
+//	removeFirst->
+//	removerLast->
 //	toArray ->
 //	getMiddle
 //	hasLoop
