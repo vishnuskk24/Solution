@@ -13,16 +13,17 @@ public class Tester {
 		
 		list.addLast(10);	
 		list.addLast(20);
-		list.addLast(30);
-		list.addLast(40);
-		list.addLast(50);
-		list.addLast(10);
+//		list.addLast(30);
+//		list.addLast(40);
+//		list.addLast(50);
+//		list.addLast(10);
 		
 		
 //		list.print();
 		list.printWithIndex();
 		
 		list.removeFirst();
+		list.removeLast();
 		list.printWithIndex();
 //		list.reverse();
 //		System.out.println(list.indexOf(100));
@@ -53,5 +54,7 @@ public class Tester {
 // getIndexes
 //size
 //to array
+//removefirst
+//removelast
 
 

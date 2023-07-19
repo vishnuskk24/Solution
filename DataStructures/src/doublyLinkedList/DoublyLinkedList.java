@@ -23,6 +23,14 @@ public class DoublyLinkedList <T>{
 	 
 	
 	// implementing Private methods
+	private void makeEmpty() {
+		head=tail=null;
+	}
+	private void checkEmpty() {
+		if(isEmpty()) {
+			throw new NoSuchElementException();
+		}
+	}
 	
 	
 //	getPrevious node
@@ -170,6 +178,7 @@ public class DoublyLinkedList <T>{
 	}
 	public T[] toArray() {
 //	System.out.println("douby LL to array");
+		@SuppressWarnings("unchecked")
 		T[] ret  = (T[]) new Object[size()];
 //		System.out.println("line 172");
 		var current = head;
@@ -189,8 +198,10 @@ public class DoublyLinkedList <T>{
 	
 	
 	public void removeFirst() {
-		if(isEmpty()) {
-			throw new NoSuchElementException();
+		checkEmpty();
+		if(size()==1) {
+			makeEmpty();
+			return;
 		}
 		var temp = head; // taking head as a copy to disconnect the link to next node
 		head=head.next; // making second element to the first element
@@ -198,6 +209,18 @@ public class DoublyLinkedList <T>{
 		temp.previous=null; // discnnecting the link from removing element to first element 
 	}
 	
+	public void removeLast() {
+		checkEmpty();
+		if(size()==1) {
+			makeEmpty();
+			return;
+		}
+		var temp= tail; //  taking last element as copy 
+		tail=tail.previous;// meaking second last element as tail 
+		tail.next=null;// disconnecting the seccond last elment to tail element 
+		temp.previous=null;// disconnetcing the the last element and second last element
+				
+	}
 //	Opertions neeed to perform
 	
 //	isEmpty
