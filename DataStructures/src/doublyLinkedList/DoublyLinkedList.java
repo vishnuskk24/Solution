@@ -52,15 +52,52 @@ public class DoublyLinkedList <T>{
 		
 		var current=head;
 		System.out.print("[");
+		
 		while(current!=null) {
 			if(current.next==null) { System.out.print(current.value);}
 			else System.out.print(current.value+",");
 			
 		current=current.next;
-		}	System.out.print("]");
-			
+		}	
+		System.out.println("]");
+	}
+	public void printWithIndex() {
+		if(isEmpty()) {
+			System.out.println("[]");
+			return;
+		}
+		int i=0;
+		var current=head;
+		System.out.println("++++++++++++++++++++++++");
+		System.out.println("Index\t\tValue");
+		System.out.println("++++++++++++++++++++++++");
+		while(current!=null) {
+			System.out.println(i+"\t\t"+current.value);
+			i++;current=current.next;
+		}
+		System.out.println("++++++++++++++++++++++++");
+	}
+	public void reverse() {
+		var current = tail;
+		while(current!=null) {
+			System.out.println(current.value);
+			current=current.previous;
+		}
+	}
+	public void addLast(T value) {
+		Node node = new Node(value);
+	if(isEmpty()) { //checking if the node is empty i true then create node assign head and tail as new node
+		head=tail=node;
+		return;
+	}
+		
+		var temp=tail;
+		tail=node; // assiging new node as last node
+		temp.next=node; // assigning next value in tail previous node   //establishing connection from secondlast node to last node
+		tail.previous=temp;   ////establishing connection from last node node to second last node
 		
 	}
+	
 	
 	
 	
