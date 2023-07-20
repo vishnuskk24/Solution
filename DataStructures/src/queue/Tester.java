@@ -12,9 +12,9 @@ public class Tester {
 //		System.out.println(queue.remove());
 		queue.add(40);
 		queue.add(50);
-		System.out.println(queue.peek());
-		queue.printWithIndex();
-		
+//		System.out.println(queue.peek());
+//		queue.printWithIndex();
+		System.out.println(queue.size());
 		
 //		queue.print();
 		
@@ -28,7 +28,7 @@ public class Tester {
 //		isFull
 //		Front
 //		Rear
-//		mplementation of Queue using array , linked list
+//		Implementation of Queue using array , linked list
 //		size
 	// isPresent
 	

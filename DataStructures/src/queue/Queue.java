@@ -31,7 +31,17 @@ public class Queue<T> {
 		
 	}
 	
-	
+	public Integer size() {
+		
+		int i=0;
+		var current = front;
+		while(current!=null) {
+			
+			current=current.next;i++;
+			
+		}
+		return i;
+	}
 	
 	
 	// public methods
