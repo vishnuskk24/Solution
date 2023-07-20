@@ -108,9 +108,15 @@ public class Queue<T> {
 		
 			System.out.println(i+"\t\t"+current.value);
 			current=current.next;
+			i++;
 			
 		}
 		
+	}
+	
+	public T peek() {
+		checkEmpty();
+		return front.value;
 	}
 
 

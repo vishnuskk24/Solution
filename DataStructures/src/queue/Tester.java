@@ -9,11 +9,14 @@ public class Tester {
 		queue.add(10);
 		queue.add(20);
 		queue.add(30);
+//		System.out.println(queue.remove());
 		queue.add(40);
 		queue.add(50);
+		System.out.println(queue.peek());
+		queue.printWithIndex();
 		
 		
-		queue.print();
+//		queue.print();
 		
 	}
 	
