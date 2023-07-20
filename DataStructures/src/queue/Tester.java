@@ -30,6 +30,6 @@ public class Tester {
 //		Rear
 //		Implementation of Queue using array , linked list
 //		size
-	// isPresent
+// 		isPresent
 	
 }

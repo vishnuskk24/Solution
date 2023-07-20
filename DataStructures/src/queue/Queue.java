@@ -2,6 +2,8 @@ package queue;
 
 import java.util.NoSuchElementException;
 
+
+// Queue using LinkedList
 public class Queue<T> {
 
 	private Node front;
