@@ -3,14 +3,15 @@ package queue;
 public class ArrayQueue <T>{
 
 	
-	T[] arr;
-	int front=0;
-	int back=0;  // two pointer that denotes the starting and ending point of queue
+	private	T[] arr;
+	private int front=0;
+	private	int back=0;  // two pointer that denotes the starting and ending point of queue
+	private int count =0;
 	
 	// private methods
 	
 	private void checkEmpty() {
-		if(back==0 || arr==null ||(front!=0 &&front==back)) {
+		if( arr==null ||count==0) {
 			throw new IllegalStateException("Queue is Empty :(");
 		}
 	}
@@ -19,19 +20,21 @@ public class ArrayQueue <T>{
 		this.arr = (T[] )new Object[size];
 	}
 	public void print() {
-		checkEmpty();
+		int f=front;
+		checkEmpty();System.out.println("count " + count);
 		System.out.print("[");
-		for(int i=front;i<back;i++) {
-			if(i+1==back) {
-				System.out.println(arr[i]+"]");
+		for(int i=0;i<count;i++,f++) {
+			if(i+1==count) {
+				System.out.println(arr[f%arr.length]+"]");
 				continue;
 			}
-			System.out.print(arr[i]+", ");
+			System.out.print(arr[f%arr.length]+", ");
 		}
 	}
 	
 	private void makeEmpty() {
 		checkEmpty();
+		count=0;
 	 front=0;
 	 back = 0;
 	 arr= (T[]) new Object[arr.length]; 
@@ -40,7 +43,7 @@ public class ArrayQueue <T>{
 	
 	// public methods
 	public boolean isFull() {
-		return arr.length<=back;
+		return arr.length<=count;
 	}
 	
 	public void enQueue(T value) {
@@ -50,25 +53,26 @@ public class ArrayQueue <T>{
 		}
 		
 		arr[back]=value;
-		
-		back++;
+		count++;
+		back=(back+1)%arr.length;
 		
 	}
 	public T deQueue() {
 		
 		checkEmpty(); // we need to check no elements are there and 
 					  // we need to check we have our array not suppose to be null  
-		if(back ==front) {
+		if(count==0) {
 			throw new IllegalStateException("No Elements in Queue");
 		}
 		
 		var ret = arr[front];
-		front++;
+		front = (front+1) % arr.length;
+		count--;
 		return ret;
 	}
 	
 	public Integer size() {
-		return back-front;
+		return count;
 	}
 	
 	public T peek() {
