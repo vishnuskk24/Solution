@@ -77,6 +77,41 @@ public class Queue<T> {
 		return temp.value;// once you disconnect the first node send its value 
 	}
 	
+	
+	public void print() {
+		checkEmpty();
+		
+		System.out.print("[");
+		var current =front;
+		while(current!=null) {
+			if(current.next==null)
+			{
+				System.out.print(current.value);
+			}else {
+				System.out.print(current.value+", ");
+			}
+			
+			current=current.next;
+			
+		}
+		System.out.print("]");
+	}
+	
+	public void printWithIndex() {
+		
+		checkEmpty();
+		
+		int i=0;
+		var current = front;
+		System.out.println("Index\t\tvalues");
+		while(current!=null) {
+		
+			System.out.println(i+"\t\t"+current.value);
+			current=current.next;
+			
+		}
+		
+	}
 
 
 }
