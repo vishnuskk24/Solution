@@ -18,7 +18,15 @@ public class Stack<T> {
 	public boolean isEmpty() {
 		return top==null;
 	}
-	
+	public Integer size() {
+		Integer i =0;
+		var current = top;
+		while(current!=null) {
+			i++;
+			current=current.next;
+		}
+		return i;
+	}
 	public void push(T value) {
 		
 		Node n = new Node(value); //  created an node and inserted the value
@@ -36,7 +44,7 @@ public class Stack<T> {
 		
 		
 		if(isEmpty()) {
-			return null;
+			throw new IllegalStateException("Stack is Empty :(");
 		}
 		
 		 var temp = top;

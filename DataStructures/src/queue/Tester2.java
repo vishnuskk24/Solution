@@ -38,3 +38,5 @@ public class Tester2 {
 //isfull()
 //isEmpty()
 //Dequeue
+
+// implementing the queue using stack

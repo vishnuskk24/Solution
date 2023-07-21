@@ -11,7 +11,10 @@ public class Tester {
 		s.push("Sarv");
 		s.push("Sar");
 		s.push("sv");   // push is working
-		s.printWithIndex(); // print is also working
+		 // print is also working
+		s.pop();
+		s.printWithIndex();
+		System.out.println(s.size());
 ////		System.out.println(s.peek());
 //		s.pop(); // pop opertion is also working
 //		s.printWithIndex();
