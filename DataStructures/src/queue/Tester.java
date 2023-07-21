@@ -5,13 +5,13 @@ public class Tester {
 	
 	public static void main(String[] args) {
 		
-		Queue<Integer> queue = new Queue<>();
-		queue.add(10);
-		queue.add(20);
-		queue.add(30);
-//		System.out.println(queue.remove());
-		queue.add(40);
-		queue.add(50);
+		QueueDynamic<Integer> queue = new QueueDynamic<>();
+		queue.enQueue(10);
+		queue.enQueue(20);
+		queue.enQueue(30);
+		System.out.println(queue.deQueue());
+		queue.enQueue(40);
+		queue.enQueue(50);
 //		System.out.println(queue.peek());
 //		queue.printWithIndex();
 		System.out.println(queue.size());

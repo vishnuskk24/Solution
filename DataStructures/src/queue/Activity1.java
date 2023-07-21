@@ -6,22 +6,22 @@ public class Activity1 {
 
 	public static void main(String[] args) {
 		Stack<Integer> stack = new Stack<Integer>();
-		Queue<Integer> queue = new Queue<>();
+		QueueDynamic<Integer> queue = new QueueDynamic<>();
 		
 		
-		queue.add(10);
-		queue.add(20);
-		queue.add(30);
-		queue.add(40);
+		queue.enQueue(10);
+		queue.enQueue(20);
+		queue.enQueue(30);
+		queue.enQueue(40);
 		queue.printWithIndex();
 		while(!queue.isEmpty()) {
 			
-			stack.push(queue.remove());
+			stack.push(queue.deQueue());
 			
 		}
 		
 		while(!stack.isEmpty()) {
-			queue.add(stack.pop());
+			queue.enQueue(stack.pop());
 		}
 		queue.printWithIndex();
 	}

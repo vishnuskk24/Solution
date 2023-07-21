@@ -1,7 +1,8 @@
 package queue;
 
-public class ArrayQueue <T>{
+public class ArrayQueue <T> implements Queue<T>{
 
+	// implementation is done using array (circular array) its static in size 
 	
 	private	T[] arr;
 	private int front=0;
@@ -11,8 +12,13 @@ public class ArrayQueue <T>{
 	// private methods
 	
 	private void checkEmpty() {
-		if( arr==null ||count==0) {
+		if( arr==null ) {
 			throw new IllegalStateException("Queue is Empty :(");
+		}
+	}
+	private  void checkElements() {
+		if(count==0) {
+			throw new IllegalStateException("No Elements in Queue");
 		}
 	}
 	public ArrayQueue(Integer size) {
@@ -42,28 +48,30 @@ public class ArrayQueue <T>{
 	
 	
 	// public methods
+	@Override
 	public boolean isFull() {
 		return arr.length<=count;
 	}
 	
+	
+	@Override
 	public void enQueue(T value) {
-//		checkEmpty();
-		if(isFull() || arr==null) { //  when back pointer crosses the last index
-			throw new IllegalStateException( "Queue is Full :(");
+		checkEmpty();
+		if(isFull()) {
+			 throw new IllegalStateException();
 		}
-		
-		arr[back]=value;
+		arr[back]  = value;
+		back = (back+1)%arr.length;
 		count++;
-		back=(back+1)%arr.length;
-		
 	}
+	
+	@Override
 	public T deQueue() {
 		
 		checkEmpty(); // we need to check no elements are there and 
-					  // we need to check we have our array not suppose to be null  
-		if(count==0) {
-			throw new IllegalStateException("No Elements in Queue");
-		}
+					  // we need to check we have our array not suppose to be null 
+		checkElements();
+		
 		
 		var ret = arr[front];
 		front = (front+1) % arr.length;
@@ -71,14 +79,26 @@ public class ArrayQueue <T>{
 		return ret;
 	}
 	
+	@Override
 	public Integer size() {
 		return count;
 	}
 	
+	@Override
 	public T peek() {
 		
 		checkEmpty();
+		checkElements();
 		return arr[front];
+	}
+	
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		if(count==0) {
+			return true;
+		}
+		return false;
 	}
 	
 //	enqueue
