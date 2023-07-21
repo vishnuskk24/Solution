@@ -58,7 +58,7 @@ public class ArrayQueue <T> implements Queue<T>{
 	public void enQueue(T value) {
 		checkEmpty();
 		if(isFull()) {
-			 throw new IllegalStateException();
+			 throw new IllegalStateException("Queue is Full");
 		}
 		arr[back]  = value;
 		back = (back+1)%arr.length;
