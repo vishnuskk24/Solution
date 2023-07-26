@@ -2,7 +2,7 @@ package Stack;
 
 import java.util.NoSuchElementException;
 
-public class ArrayStack<T> {
+public class ArrayStack<T>  implements Stack<T>{
 
 	
 	private  T[] arr;
@@ -19,6 +19,9 @@ public class ArrayStack<T> {
 			throw new NoSuchElementException("Stack is Empty");
 			
 		}
+	}
+	private T get(int index) {
+		return this.arr[index];
 	}
 	
 	public  boolean isEmpty() {
@@ -45,6 +48,64 @@ public class ArrayStack<T> {
 	public T pop() {
 		checkEmpty();
 		 
-		return this.arr[top--];
+		return this.arr[--top];
+	}
+	public T peek() {
+		checkEmpty();
+		return get(top-1);
+	}
+	@Override
+	public Integer size() {
+		return top;
+	}
+	public Integer totalSize() {
+		return this.arr.length;
+	}
+	public Integer availableSize() {
+		return this.arr.length-top;
+	}
+	@Override
+	public Integer search(T value) {
+		checkEmpty();
+		for(int i=top-1 ; i>=0;i--) {
+			if(this.arr[i].equals(value)) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	@Override
+	public boolean isPresent(T value) {
+		
+		return -1!=search(value);
+	}
+	@Override
+	public void print() {
+		checkEmpty();
+		System.out.print("[");
+		for(int i=top-1;i>=0;i--) {
+			if(i!=0) {
+				System.out.print(this.arr[i]+", ");
+				
+			}else {
+				System.out.print(this.arr[i]);
+			}
+			
+		}System.out.println("]");
+		
+	}
+	@Override
+	public void printWithIndex() {
+		// TODO Auto-generated method stub
+		checkEmpty();
+		
+		for(int i=top-1;i>=0;i--) {
+			
+				System.out.println(i+"\t-->\t" +this.arr[i] );
+				
+			
+			
+		}
 	}
 }

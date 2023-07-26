@@ -1,11 +1,11 @@
 package queue;
 
-import Stack.Stack;
+import Stack.StackDynamic;
 
 public class Activity1 {
 
 	public static void main(String[] args) {
-		Stack<Integer> stack = new Stack<Integer>();
+		StackDynamic<Integer> stack = new StackDynamic<Integer>();
 		QueueDynamic<Integer> queue = new QueueDynamic<>();
 		
 		

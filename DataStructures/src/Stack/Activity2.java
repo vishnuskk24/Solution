@@ -33,7 +33,7 @@ public class Activity2 {
 	
 	public static boolean isBalanced(String value) {
 		boolean flag =false;
-		Stack<Character> stack = new Stack<Character>();
+		StackDynamic<Character> stack = new StackDynamic<Character>();
 		
 		if(value==null) {
 			throw new IllegalArgumentException();

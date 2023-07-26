@@ -7,7 +7,7 @@ public class Activity1 {
 			throw new IllegalAccessException();
 		}
 		
-		Stack<Character> c= new Stack<Character>();
+		StackDynamic<Character> c= new StackDynamic<Character>();
 		char[] input = s.toCharArray();
 		for(Character a:input) {
 			c.push(a);

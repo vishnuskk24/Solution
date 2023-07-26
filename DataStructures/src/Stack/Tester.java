@@ -5,7 +5,7 @@ public class Tester {
 	public static void main(String[] args) throws Exception {
 		
 		
-		Stack<String> s = new Stack<>();
+		StackDynamic<String> s = new StackDynamic<>();
 		s.push("ss");
 		s.push("Vishnu");
 		s.push("Sarv");

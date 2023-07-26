@@ -1,17 +1,17 @@
 package queue;
 
-import Stack.Stack;
+import Stack.StackDynamic;
 
 public class QueueSt<T> implements Queue<T> {
 
 	
 //	in these implementation we are implementing the queue using two stack //  in these we are using dynamic stack  it dont have fixed size
-	private Stack<T> stack1;
-	private Stack<T> stack2;
+	private StackDynamic<T> stack1;
+	private StackDynamic<T> stack2;
 	
 	public QueueSt(){
-		stack1=new Stack<>();
-		stack2=new Stack<>();
+		stack1=new StackDynamic<>();
+		stack2=new StackDynamic<>();
 		
 	}
 	
