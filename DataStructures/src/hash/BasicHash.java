@@ -76,4 +76,23 @@ public class BasicHash<T> {
 		return false;
 		
 	}
+	
+	public void print() {
+		System.out.print("[");
+		int i =0;
+		for(T c: arr) {
+			i++;
+			if(c ==null) {
+				
+				continue;
+			}else {
+				if(i== arr.length) {
+					System.out.print(c);
+				}
+			}
+			System.out.println(c+" ,");
+			
+		}
+		System.out.print("]");
+	}
 }
