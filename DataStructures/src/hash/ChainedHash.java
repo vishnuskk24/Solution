@@ -95,5 +95,23 @@ public class ChainedHash<T> {
 		}
 		
 	}
+	private boolean checkNode(Node n, T value) {
+		
+		var current = n;
+		while(current.next!=null) {
+			if( value.equals(current.value)) return true;
+			current =current.next;
+			
+		}
+		
+		return false;
+	}
+	
+	public boolean isPresent(T value) {
+		Integer index = generateHash(value);
+		
+		return isAvailable(index)?false:checkNode(getNode(index),value);
+		
+	}
 }
  
