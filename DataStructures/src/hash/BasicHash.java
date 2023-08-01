@@ -80,19 +80,23 @@ public class BasicHash<T> {
 	public void print() {
 		System.out.print("[");
 		int i =0;
+		int j=0;
 		for(T c: arr) {
 			i++;
 			if(c ==null) {
 				
 				continue;
 			}else {
-				if(i== arr.length) {
+				if(j==0) {
+					j++;
 					System.out.print(c);
+				}else {
+					System.out.print(", "+c);
 				}
 			}
-			System.out.println(c+" ,");
+			
 			
 		}
-		System.out.print("]");
+		System.out.println("]");
 	}
 }
