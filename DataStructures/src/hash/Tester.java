@@ -50,7 +50,7 @@ public class Tester {
 		a.put(new Customer("Sarv", 26, LocalDate.of(1996, 04, 10), 886543210l));
 		a.put(new Customer("raj", 29, LocalDate.of(1994, 04, 10), 976543210l));
 		a.put(new Customer("drago", 22, LocalDate.of(2001, 04, 10), 876543210l));
-		
+		a.print();
 		
 	}
 }
