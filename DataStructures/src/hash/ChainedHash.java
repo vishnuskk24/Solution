@@ -1,21 +1,23 @@
 package hash;
 
 public class ChainedHash<T> {
-
-	private Node[] arr=null;
-	
-	public ChainedHash(){
-		arr= (Node[])new Object[100];
-	}
-	private class Node{
+	private class Node<T>{
 		
 		private T value;
-		private	Node next;
+		private	Node<T> next;
 		
 		private Node(T value) {
 			this.value=value;
 		}
 	}
+
+//	@SuppressWarnings("rawtypes")
+	private Node[] arr=null;
+	
+	public ChainedHash(){
+		arr= new Node[100];
+	}
+	
 	private boolean isUserDefined(T value) {
 		
 		if(value instanceof Integer || value instanceof Double || value instanceof Long || value instanceof Character || value instanceof Boolean || value instanceof Float || value instanceof Byte  ) {
@@ -42,6 +44,7 @@ public class ChainedHash<T> {
 	
 	private Integer genrateHashForPreDefined(T value) {
 		Integer index =( (Integer) value) %arr.length;
+		index=(index<0)?-1*index:index;
 		return index;
 	}
 		
@@ -106,7 +109,25 @@ public class ChainedHash<T> {
 		
 		return false;
 	}
-	
+	public void print() {
+		int index=0;
+		System.out.println("[");
+		for(var element: arr){
+			
+			if(element==null) continue;
+			var current = element;System.out.print("[");
+			while(current!=null) {
+				if(current.next==null)System.out.print(current.value );
+				else System.out.print(current.value + ", ");
+				
+				current=current.next;
+				
+			}System.out.print("]");
+			index++;
+			System.out.println();
+		}
+		System.out.println("]");
+	}
 	public boolean isPresent(T value) {
 		Integer index = generateHash(value);
 		
