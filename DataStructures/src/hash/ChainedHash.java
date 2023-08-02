@@ -118,7 +118,7 @@ public class ChainedHash<T> {
 			var current = element;System.out.print("[");
 			while(current!=null) {
 				if(current.next==null)System.out.print(current.value );
-				else System.out.print(current.value + ", ");
+				else System.out.print(current.value.t + ", ");
 				
 				current=current.next;
 				
