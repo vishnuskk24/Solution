@@ -164,6 +164,22 @@ public class Linkedlist<T> {
 		
 		
 	}
+	public T get(int index) {
+		if(size()<=index) {
+			throw new IndexOutOfBoundsException(" list size " + size() + " given index " + index);
+		}
+		T value = null;
+		int i =0 ;
+		var current = head;
+		while(current!=null) {
+			if(i==index) {
+				value = current.value;
+				break;
+			}
+			current=current.next;
+		}
+		return value;
+	}
 	public Integer size() {
 		
 		

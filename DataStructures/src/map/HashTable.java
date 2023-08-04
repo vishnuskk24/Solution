@@ -1,10 +1,10 @@
 package map;
 
-import java.util.LinkedList;
+
 
 import LinkedList.Linkedlist;
 
-public class HashTable<K,V> {
+public class HashTable<K,V> implements Map<K, V>{
 
 	
 	 
@@ -76,8 +76,31 @@ public class HashTable<K,V> {
 		this.arr[index]=entry;
 		
 	}
-	private boolean isContains(K key,Linkedlist<Entry> chain,V value) {
-		for(Entry r : chain.toArray()) {
+	private void updateValueInList(K key,Linkedlist<Entry> chain,V value) {
+
+		int last = chain.size();
+		for(int i=0;i<last;i++) {
+			Entry r = chain.get(i);
+			if(r.key.equals(key)) {
+				r.value=value;
+				break;
+			}
+			
+		}
+		
+		
+	}
+	private int getIndex(K key) {
+		return key!=null ? key.hashCode()%arr.length:0;
+	}
+	public  boolean isContains(K key) {
+		if(isAvailable(getIndex(key))) {
+			
+		}
+		Linkedlist<Entry> chain = this.arr[getIndex(key)];
+		int last = chain.size();
+		for(int i=0;i<last;i++) {
+			Entry r = chain.get(i);
 			if(r.equals(key)) {
 				r.value=value;
 				return true;
@@ -88,19 +111,20 @@ public class HashTable<K,V> {
 		return false;
 		
 	}
-	private void addItToList(int index , K key,V value) {
-		Linkedlist<Entry> l =this.arr[index];
-		if(!isContains(key, l,value)) {
-			l.addlast(new Entry(key,value));
+	private void addItToList( K key,V value) {
+		int index = getIndex(key);
+		if(!isContains(key)) {
+			arr[index].addlast(new Entry(key,value));
 		}
 		
 	}
 	private V getValueFromEntryList(int index,K key) {
 		Linkedlist<Entry> chain = this.arr[index];
-		for(Entry e:chain.toArray() ) {
-			if(key.equals(e.key)) {
-				return (V) e.value;
-			}
+		int last = chain.size();
+		for(int i=0;i<last;i++) {
+			Entry r = chain.get(i);
+			if(r.key.equals(key)) {
+				return (V) r.value;			}
 			
 		}
 		return null;
@@ -110,9 +134,6 @@ public class HashTable<K,V> {
 	private void removeEntryFromList(K key,int index) {
 		
 		Linkedlist<Entry> chain = this.arr[index];
-		if(chain.size()>=index) {
-			//excp
-		}
 		chain.remove(index);
 		for(Entry e:chain.toArray() ) {
 			if(key.equals(e.key)) {
@@ -122,9 +143,24 @@ public class HashTable<K,V> {
 			
 		}
 	}
+	private void iterateLinkedList(Linkedlist<Entry> chain ) {
+		
+		int last = chain.size();
+		System.out.print("[");
+		for(int j =0 ; j<last;j++) {
+			
+			Entry e = chain.get(j);
+																		//			
+																		//			if(j==last) System.out.print(e.key+" = "+e.value);
+																		//			else 
+			System.out.print(e.key+" = "+e.value);
+		
+		}
+		System.out.println("]");
+	}
+	@Override
 	public void put(K key ,V value) {
 		
-//		int index = generateHash(key);
 		
 		int hash = key.hashCode();
 		
@@ -133,28 +169,54 @@ public class HashTable<K,V> {
 			addEntry(key, value, index);
 		}else {
 //			adding the key value pair in our Existing linkedList that present in the index
-			
+
 			addItToList(index, key, value);
 		}
 		
 	}
 	
-	
-	
+	@Override
 	public V get(K key) {
 		int index = key.hashCode()%arr.length;
-		if(isAvailable(index)) {
+		if(!isAvailable(index)) {
+			
 			return getValueFromEntryList(index, key);
 			
 		}else {
 			return null;
 		}
 	}
-	
+	@Override
 	public void remove(K key) {
 		int index = key.hashCode()%arr.length;
 		if(isAvailable(index)) {
 			
+			removeEntryFromList(key,index);
 		}
+	}
+	@Override
+	public void replace(K key , V value) {
+		
+		int index = key.hashCode()%arr.length;
+		if(!isAvailable(index)) {
+			
+			updateValueInList(key,this.arr[index],value);
+		}
+	}
+	
+	public void print() {
+		System.out.println("[");
+		
+		for(Linkedlist<Entry> l :arr) {
+			
+			if(l!=null) {
+				
+				iterateLinkedList(l);
+			
+				
+			}
+			
+		}
+		System.out.println("]");
 	}
 }
