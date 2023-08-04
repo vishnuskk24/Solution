@@ -227,6 +227,24 @@ public class Linkedlist<T> {
 //			
 //		}
 	}
+	public void remove(int index) {
+		if(index>=size()) {
+			throw new ArrayIndexOutOfBoundsException("Size of list is " +size()+" given index is " + index);
+		}
+		
+		int i=0;
+		
+		var current = head;
+		while(current!=null) {
+			if(index==i+1) {
+				var previous = getPrevious(current);
+				previous.next=current.next;
+				current.next=null;
+				break;
+			}
+			i++;current=current.next;
+		}
+	}
 	
 	public T[] toArray() {
 		T[] arr;

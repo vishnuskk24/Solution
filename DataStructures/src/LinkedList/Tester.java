@@ -1,6 +1,9 @@
 package LinkedList;
 
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class Tester {
 
@@ -27,11 +30,17 @@ public class Tester {
 		
 //		l.addFirst(10);
 //		l.addlast(20);
-		l.addlast(30);
-		l.addlast(40);
-		l.addlast(50);
-		l.makeLoop();
-		System.out.println(l.isLooped());
+//		l.addlast(30);
+//		l.addlast(40);
+//		l.addlast(50);
+//		l.makeLoop();
+//		System.out.println(l.isLooped());
+		Map<Integer, String> m = new Hashtable<>();
+		m.put(1, "g");
+		m.put(4, "e");
+		m.put(3, "C");
+		m.put(1, "k");
+		System.out.println(m.get(1));
 //		l.addlast(60);
 //		l.addlast(70);
 //		l.addlast(80);

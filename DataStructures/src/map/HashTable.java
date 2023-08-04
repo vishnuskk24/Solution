@@ -95,12 +95,23 @@ public class HashTable<K,V> {
 		}
 		
 	}
-	
+	private V getValueFromEntryList(int index,K key) {
+		Linkedlist<Entry> chain = this.arr[index];
+		for(Entry e:chain.toArray() ) {
+			if(key.equals(e.key)) {
+				return (V) e.value;
+			}
+			
+		}
+		return null;
+		
+		
+	}
 	public void put(K key ,V value) {
 		
 //		int index = generateHash(key);
 		
-		int hash = value.hashCode();
+		int hash = key.hashCode();
 		
 		int index =  hash<0?-1*hash%arr.length:hash%arr.length;
 		if(isAvailable(index)) {  // if the index is empty and null adding new linked list to the index of our array
@@ -113,4 +124,15 @@ public class HashTable<K,V> {
 		
 	}
 	
+	
+	
+	public V get(K key) {
+		int index = key.hashCode()%arr.length;
+		if(isAvailable(index)) {
+			return getValueFromEntryList(index, key);
+			
+		}else {
+			return null;
+		}
+	}
 }
