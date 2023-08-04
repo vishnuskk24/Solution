@@ -107,6 +107,21 @@ public class HashTable<K,V> {
 		
 		
 	}
+	private void removeEntryFromList(K key,int index) {
+		
+		Linkedlist<Entry> chain = this.arr[index];
+		if(chain.size()>=index) {
+			//excp
+		}
+		chain.remove(index);
+		for(Entry e:chain.toArray() ) {
+			if(key.equals(e.key)) {
+				
+				break;
+			}
+			
+		}
+	}
 	public void put(K key ,V value) {
 		
 //		int index = generateHash(key);
@@ -133,6 +148,13 @@ public class HashTable<K,V> {
 			
 		}else {
 			return null;
+		}
+	}
+	
+	public void remove(K key) {
+		int index = key.hashCode()%arr.length;
+		if(isAvailable(index)) {
+			
 		}
 	}
 }
