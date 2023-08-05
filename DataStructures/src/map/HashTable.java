@@ -91,7 +91,11 @@ public class HashTable<K,V> implements Map<K, V>{
 		
 	}
 	private int getIndex(K key) {
-		return key!=null ? key.hashCode()%arr.length:0;
+		if(key==null) {
+			return 0;
+		}
+		int hash = key.hashCode();
+		return   hash<0?-1*hash%arr.length:hash%arr.length;
 	}
 	public  boolean isContains(K key) {
 		if(isAvailable(getIndex(key))) {
@@ -102,7 +106,6 @@ public class HashTable<K,V> implements Map<K, V>{
 		for(int i=0;i<last;i++) {
 			Entry r = chain.get(i);
 			if(r.equals(key)) {
-				r.value=value;
 				return true;
 			}
 			
@@ -162,15 +165,15 @@ public class HashTable<K,V> implements Map<K, V>{
 	public void put(K key ,V value) {
 		
 		
-		int hash = key.hashCode();
 		
-		int index =  hash<0?-1*hash%arr.length:hash%arr.length;
+		
+		int index =getIndex(key);
 		if(isAvailable(index)) {  // if the index is empty and null adding new linked list to the index of our array
 			addEntry(key, value, index);
 		}else {
 //			adding the key value pair in our Existing linkedList that present in the index
 
-			addItToList(index, key, value);
+			addItToList( key, value);
 		}
 		
 	}
