@@ -177,6 +177,7 @@ public class Linkedlist<T> {
 				break;
 			}
 			current=current.next;
+			i++;
 		}
 		return value;
 	}

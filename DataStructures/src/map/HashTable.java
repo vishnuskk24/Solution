@@ -16,6 +16,11 @@ public class HashTable<K,V> implements Map<K, V>{
 			this.key=key;
 			this.value=value;
 		}
+
+		@Override
+		public String toString() {
+			return "Entry [key=" + key + ", value=" + value + "]";
+		}
 	}
 	
 	private Linkedlist<Entry>[] arr;
@@ -72,7 +77,9 @@ public class HashTable<K,V> implements Map<K, V>{
 	private  void addEntry(K key,V value,int index) {
 		
 		Linkedlist<Entry> entry=new Linkedlist<>();
-		entry.addlast(new Entry(key, value));
+		Entry e = new Entry(key, value);
+//		System.out.println("adding last " + e.toString());
+		entry.addlast(e);
 		this.arr[index]=entry;
 		
 	}
@@ -81,7 +88,8 @@ public class HashTable<K,V> implements Map<K, V>{
 		int last = chain.size();
 		for(int i=0;i<last;i++) {
 			Entry r = chain.get(i);
-			if(r.key.equals(key)) {
+//			System.out.println(r.toString());
+			if((r.key==null  && key==null) || r.key.equals(key)) {
 				r.value=value;
 				break;
 			}
@@ -90,12 +98,14 @@ public class HashTable<K,V> implements Map<K, V>{
 		
 		
 	}
-	private int getIndex(K key) {
+	public int getIndex(K key) {
 		if(key==null) {
 			return 0;
 		}
 		int hash = key.hashCode();
-		return   hash<0?-1*hash%arr.length:hash%arr.length;
+		int index = hash<0?-1*hash%arr.length:hash%arr.length;
+//		System.out.println(key +" - > index -> " + index);
+		return  index;
 	}
 	public  boolean isContains(K key) {
 		if(isAvailable(getIndex(key))) {
@@ -105,19 +115,27 @@ public class HashTable<K,V> implements Map<K, V>{
 		int last = chain.size();
 		for(int i=0;i<last;i++) {
 			Entry r = chain.get(i);
-			if(r.equals(key)) {
+			if(r.key.equals(key)) {
+//				System.out.println("is contains returning true for key - > " + key);
 				return true;
 			}
 			
 		}
-		
-		return false;
+//		System.out.println("is contains returining false for key  - > " + key);
+		return false; 
 		
 	}
 	private void addItToList( K key,V value) {
+//		System.out.println("index is already occupied by another value for key  - > " +key);
 		int index = getIndex(key);
+		
 		if(!isContains(key)) {
-			arr[index].addlast(new Entry(key,value));
+//			System.out.println(" adding the keey to linked list becoz key is not available");
+			Entry e = new Entry(key,value);
+//					System.out.println("Entry e - > " + e.toString());
+			arr[index].addlast(e);
+		}else {
+			updateValueInList(key, this.arr[getIndex(key)], value);
 		}
 		
 	}
@@ -149,17 +167,17 @@ public class HashTable<K,V> implements Map<K, V>{
 	private void iterateLinkedList(Linkedlist<Entry> chain ) {
 		
 		int last = chain.size();
-		System.out.print("[");
+//		System.out.print("[");
 		for(int j =0 ; j<last;j++) {
 			
 			Entry e = chain.get(j);
-																		//			
+//						
 																		//			if(j==last) System.out.print(e.key+" = "+e.value);
-																		//			else 
-			System.out.print(e.key+" = "+e.value);
+						 
+			System.out.println("["+e.key+" = "+e.value+"]");
 		
 		}
-		System.out.println("]");
+//		System.out.println("]");
 	}
 	@Override
 	public void put(K key ,V value) {
@@ -169,12 +187,16 @@ public class HashTable<K,V> implements Map<K, V>{
 		
 		int index =getIndex(key);
 		if(isAvailable(index)) {  // if the index is empty and null adding new linked list to the index of our array
+//			System.out.println(" adding an entry  key -> " + key + "  value  - > " + value);
 			addEntry(key, value, index);
+//			System.out.println("adding is done by addentry for key " + key);
 		}else {
 //			adding the key value pair in our Existing linkedList that present in the index
-
+//			System.out.println(" adding to list -> " + key + "  value  - > " + value);
 			addItToList( key, value);
+//			System.out.println("adding is done by addit to list for key " +key);
 		}
+//		System.out.println(arr[1].size());
 		
 	}
 	
@@ -200,7 +222,7 @@ public class HashTable<K,V> implements Map<K, V>{
 	@Override
 	public void replace(K key , V value) {
 		
-		int index = key.hashCode()%arr.length;
+		int index =getIndex(key);
 		if(!isAvailable(index)) {
 			
 			updateValueInList(key,this.arr[index],value);
