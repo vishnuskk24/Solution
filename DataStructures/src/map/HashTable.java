@@ -2,6 +2,10 @@ package map;
 
 
 
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
+
 import LinkedList.Linkedlist;
 
 public class HashTable<K,V> implements Map<K, V>{
@@ -243,5 +247,51 @@ public class HashTable<K,V> implements Map<K, V>{
 			
 		}
 		System.out.println("]");
+	}
+
+	@Override
+	public Set<K> getKeySet() {
+		// TODO Auto-generated method stub
+		boolean flag = true;
+		Set<K> keys = new HashSet<>();
+		for(int i=0;i<arr.length;i++) {
+			
+			if(arr[i]==null) continue; // if that index is not used then it will be null value
+			
+			flag = false;
+			Linkedlist<Entry> chain = arr[i];
+//			 iterate chain to get keys from Entry object
+			
+			int last = chain.size();
+			
+			for(int j=0;j<last;j++) { // iterate the linked list till last  to get the key and once you got the key store it into the hashset
+				Entry e =chain.get(j);
+				keys.add((K) e.key);
+				
+			}
+			
+			
+		}// need to continue tilll the last index of you linked list (specializd array) :)
+		if(flag) keys=null; //  if no values in our hashmap than return null
+		
+		
+		
+		return keys;
+	}
+
+	@Override
+	public Integer countPairs() {
+		Integer totalpairs=0;
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i]== null) continue;
+			
+			Linkedlist<Entry> chain=arr[i];
+			int last = chain.size();
+			for(int j=0;j<last;j++) {
+				totalpairs++;
+				
+			}
+		}
+		return totalpairs;
 	}
 }

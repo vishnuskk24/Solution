@@ -42,6 +42,18 @@ public class Tester {
 		
 		
 		map.print();
+		System.out.println(map.countPairs());
+//		for(int i=1;i<27;i++) {
+		int i=1;
+			for(String s :map.getKeySet()) {
+				
+//				System.out.println(i);
+				System.out.println(i++ + "   "  + s + "- > \t\t\t " +s.hashCode()%i);
+				
+			}
+//			System.out.println("===================================================================== \n\t\t\t - >"+ (i+1));
+			
+//		}
 		
 	}
 	
