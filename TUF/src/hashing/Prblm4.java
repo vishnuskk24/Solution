@@ -24,7 +24,7 @@ public class Prblm4 {
 
 	        int maxFreq = 0, minFreq = n;
 	        int maxEle = 0, minEle = 0;
-	        // Traverse through map and find the elements
+	        
 	        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 	            int count = entry.getValue();
 	            int element = entry.getKey();
