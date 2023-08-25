@@ -22,24 +22,6 @@ public class Prblm4 {
 	            }
 	        }
 
-	        int maxFreq = 0, minFreq = n;
-	        int maxEle = 0, minEle = 0;
-	        
-	        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-	            int count = entry.getValue();
-	            int element = entry.getKey();
-
-	            if (count > maxFreq) {
-	                maxEle = element;
-	                maxFreq = count;
-	            }
-	            if (count < minFreq) {
-	                minEle = element;
-	                minFreq = count;
-	            }
-	        }
-
-	        System.out.println("The highest frequency element is: " + maxEle);
-	        System.out.println("The lowest frequency element is: " + minEle);
+	       
 	    }
 }
