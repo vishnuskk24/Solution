@@ -81,4 +81,21 @@ public class TwoStack<T> {
 		public boolean isFull2() {
 			return pointer1== pointer2;
 		}
+		
+		
+		public void print1() {
+			for(int i =0;i<pointer1+1;i++) {
+				System.out.println(this.arr[i]);
+			}
+		}
+		public void print() {
+			for(int i =arr.length-1;i>pointer2;i++) {
+				System.out.println(this.arr[i]);
+			}
+		}
+		public void printAll() {
+			for(int i =0;i<arr.length;i++) {
+				System.out.println(this.arr[i]);
+			}
+		}
 }
