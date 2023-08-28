@@ -54,14 +54,19 @@ public class TwoStack<T> {
 		if(isEmpty1()) {
 			throw new NoSuchElementException("stack 1 is empty"); 
 		}
-		return this.arr[pointer1--];
+//		System.out.println("last element in stack one "  + this.arr[pointer1--]);
+		T rt = this.arr[pointer1-1];
+		this.pointer1--;
+		return rt;
 	
 	}
 	public T pop2() {
 		if(isEmpty2()) {
 			throw new NoSuchElementException("Stack 2 is Empty ");
 		}
-		return this.arr[pointer2++];
+		T ret = this.arr[pointer2+1];
+		pointer2++;
+		return ret;
 		
 		
 	}
@@ -75,21 +80,21 @@ public class TwoStack<T> {
 			return pointer2==arr.length-1;
 		}
 		public boolean isFull1() {
-			return pointer1== pointer2;
+			return pointer1-1>= pointer2;
 		}
 
 		public boolean isFull2() {
-			return pointer1== pointer2;
+			return pointer1-1==pointer2;
 		}
 		
 		
 		public void print1() {
-			for(int i =0;i<pointer1+1;i++) {
+			for(int i =0;i<pointer1;i++) {
 				System.out.println(this.arr[i]);
 			}
 		}
-		public void print() {
-			for(int i =arr.length-1;i>pointer2;i++) {
+		public void print2() {
+			for(int i =pointer2+1;i<arr.length;i++) {
 				System.out.println(this.arr[i]);
 			}
 		}
