@@ -17,7 +17,7 @@ public class BinaryTree<T extends Comparable<T>>  {
 		
 		public Node(T value) {
 			this.value=value;
-			this.size=0;
+			
 			
 		}
 	}
@@ -63,16 +63,20 @@ public class BinaryTree<T extends Comparable<T>>  {
 	public void insert(T value) {
 		
 		
-		Node node = new Node(value);
+		
 		
 		if (root==null) {
+			this.size++;
 			root= new Node(value);
 			return;
-			
-		
-		
 		}
 		
+		insert(root,value);
+		
 	}
+	public Integer size() {
+		return this.size;
+	}
+	
 	
 }
