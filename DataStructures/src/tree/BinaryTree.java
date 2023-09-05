@@ -78,5 +78,30 @@ public class BinaryTree<T extends Comparable<T>>  {
 		return this.size;
 	}
 	
+	public boolean find(T value) {
+		
+		if (isEmpty()) {
+			return false;
+		}
+		var current = root;
+		while(current!=null) {
+			if(value.compareTo((T) current.value)==0) {
+				System.out.print( current.value);
+				return true;
+			}
+			
+			if(value.compareTo((T) current.value)>0) {
+				System.out.print( current.value+" -> ");
+				current=current.right;
+			}else {
+				System.out.print( current.value+" -> ");
+				current=current.left;
+			}
+			
+		}
+		
+		return false;
+		
+	}
 	
 }
