@@ -10,15 +10,28 @@ public class Tester {
 		b.insert(1);
 		b.insert(6);
 		b.insert(8);
+		b.insert(10);
 		b.insert(100);
+		
+		
+//		b.insert(20);
+//		b.insert(10);
+//		b.insert(30);
+//		b.insert(6);
+//		b.insert(11);
+//		b.insert(18);
+//		b.insert(3);
+//		b.insert(3);b.insert(8);b.insert(26);
 		b.insert(101);
 		b.insert(105);
 		b.insert(107);
-		
 		b.insert(104);
 		b.insert(102);
-		System.out.println("done");
-		System.out.println(b.find(107));
+//		System.out.println("done");
+//		System.out.println(b.find(107));
+//		b.traversePreOrder();
+//		b.traverseInOrder();
+		b.traversePostOrder();
 	}
 }
 

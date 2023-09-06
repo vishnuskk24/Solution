@@ -104,4 +104,67 @@ public class BinaryTree<T extends Comparable<T>>  {
 		
 	}
 	
+	private void traversePreOrder(Node root) {
+	
+		if(root==null)return;//  basecondition 
+		
+		System.out.println(root.value);
+		traversePreOrder(root.left);   // these eleft call will execute until pointer reach the left child  leaf node of each tree 
+		traversePreOrder(root.right);
+	}
+	public void traversePreOrder() {
+		
+		traversePreOrder(root);
+		
+	}
+	
+	private void traverseInOrder(Node root) {
+		
+		if(root==null) {
+		return;	
+		}
+		traverseInOrder(root.left);
+		System.out.println(root.value);
+		traverseInOrder(root.right);
+	}
+	public void traverseInOrder() {
+		traverseInOrder(root);
+	}
+	
+	public void traversePostOrder(Node root) {
+		
+		if (root==null) return;
+		
+		traversePostOrder(root.left);
+		
+		traversePostOrder(root.right);
+		System.out.println(root.value);
+		
+	}
+	public void traversePostOrder() {
+		traversePostOrder(root);
+	}
+	
+//	pre-order  -> root,left,right
+//	inorder - > left root right
+//	postOrder - > left right root
+	
+	
+//	To calculate Height of the tree is postorder traversal
+	
+	
+	private int heightOfTree(Node root,int height) {
+		
+		if(root==null) return height;
+		int left = heightOfTree(root.left,height+1);
+		int right = heightOfTree(root.right,height+1);
+		return (left>right)? left:right;
+	}
+	
+	public int heightOfTheTree() {
+		return heightOfTree(root, size);
+	}
+	
+	
+	
 }
