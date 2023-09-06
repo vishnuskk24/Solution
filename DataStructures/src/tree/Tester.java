@@ -26,12 +26,14 @@ public class Tester {
 		b.insert(105);
 		b.insert(107);
 		b.insert(104);
-		b.insert(102);
+//		b.insert(102);
 //		System.out.println("done");
 //		System.out.println(b.find(107));
 //		b.traversePreOrder();
 //		b.traverseInOrder();
-		b.traversePostOrder();
+//		b.traversePostOrder();
+//		System.out.println(b.heightOfTheTree(7));
+		System.out.println(b.heightOfRootNode());
 	}
 }
 

@@ -1,5 +1,6 @@
 package tree;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -155,16 +156,48 @@ public class BinaryTree<T extends Comparable<T>>  {
 	
 	private int heightOfTree(Node root,int height) {
 		
-		if(root==null) return height;
+		if(root==null) {
+//			System.out.println("height " + height);
+			return height-1;
+		}
 		int left = heightOfTree(root.left,height+1);
 		int right = heightOfTree(root.right,height+1);
+		System.out.println(left + " "  + right);
 		return (left>right)? left:right;
 	}
 	
-	public int heightOfTheTree() {
-		return heightOfTree(root, size);
+	private Node getNode(T value) {
+		
+		if(isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		var current = root;
+		while(current!=null) {
+			
+			if((value.compareTo((T) current.value)==0)){
+				System.out.println("->" + current.value);
+				return current;
+			}
+			if(value.compareTo((T) current.value)>0) {
+				System.out.print(current.value+ "->");
+				current=current.right;
+				
+			}else{
+				System.out.print(current.value+ "->");
+				current=current.left;
+			}
+			
+		}
+		throw new NoSuchElementException(); // if the else block inside while loop not executed the then the value is not present
 	}
 	
+	public int heightOfTheTree(T value) {
+		var root= getNode(value);
+		return heightOfTree(root, 0);
+	}
+	public Integer heightOfRootNode() {
+		return heightOfTree(root,0);
+	}
 	
 	
 }
