@@ -37,6 +37,10 @@ public class BinaryTree<T extends Comparable<T>>  {
 	// property only two child needs to be there
 	// left node needs to be lesser than current node and right node needs to be greater than current node value
 	
+	private T noElement() {
+		throw new NoSuchElementException();
+	}
+	
 	private void insert(Node n, T value) {
 //			if compare to return value is positive then insertinf value is bigger choose right 
 		if(value.compareTo((T) n.value) > 0) {  // we did insert using recursion  there is an another option to use while loop
@@ -152,6 +156,7 @@ public class BinaryTree<T extends Comparable<T>>  {
 	
 	
 //	To calculate Height of the tree is postorder traversal
+//	calculate the minimum value in that tree
 	
 	
 	private int heightOfTree(Node root,int height) {
@@ -197,6 +202,34 @@ public class BinaryTree<T extends Comparable<T>>  {
 	}
 	public Integer heightOfRootNode() {
 		return heightOfTree(root,0);
+	}
+	
+	private T min(Node n) {
+	
+		if( n==null) {
+			return null;
+		}
+		T left=min(n.left);
+	    T right =min(n.right);
+		T min = (T) n.value;
+		System.out.println("node value  -> " +n.value +" left- > " +left + " right -  >  " + right);
+		if(left!=null && (left.compareTo(min))<0)
+			{
+			
+			min= left;
+			System.out.println("comparing left"+ left +" and root  becoz left is not null"+ root + " min = "+min );
+			}
+		if (right!=null && right.compareTo(min)<0) {
+			min= right;
+			System.out.println("comparing left"+ right +" and root  becoz right is not null "+ root + " min = "+min );
+		}
+	System.out.println("returning min to recursion call " + min);
+		return min;
+		
+	}
+	public T min() {
+//		if(isEmpty()) throw new NoSuchElementException();
+		return isEmpty()?noElement():min(root);
 	}
 	
 	
