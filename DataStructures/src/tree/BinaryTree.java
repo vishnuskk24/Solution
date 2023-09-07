@@ -204,28 +204,36 @@ public class BinaryTree<T extends Comparable<T>>  {
 		return heightOfTree(root,0);
 	}
 	
-	private T min(Node n) {
+//	private T min(Node n) { // it will visit all the node 
+//	
+//		if( n==null) {
+//			return null;
+//		}
+//		T left=min(n.left);
+//	    T right =min(n.right);
+//		T min = (T) n.value;
+//		System.out.println("node value  -> " +n.value +" left- > " +left + " right -  >  " + right);
+//		if(left!=null && (left.compareTo(min))<0)
+//			{
+//			
+//			min= left;
+//			System.out.println("comparing left"+ left +" and root  becoz left is not null"+ root + " min = "+min );
+//			}
+//		if (right!=null && right.compareTo(min)<0) {
+//			min= right;
+//			System.out.println("comparing left"+ right +" and root  becoz right is not null "+ root + " min = "+min );
+//		}
+//	System.out.println("returning min to recursion call " + min);
+//		return min;
+//		
+//	}
 	
-		if( n==null) {
-			return null;
+	
+	private T min(Node n ) {
+		if (n.left==null) {
+			return (T) n.value;
 		}
-		T left=min(n.left);
-	    T right =min(n.right);
-		T min = (T) n.value;
-		System.out.println("node value  -> " +n.value +" left- > " +left + " right -  >  " + right);
-		if(left!=null && (left.compareTo(min))<0)
-			{
-			
-			min= left;
-			System.out.println("comparing left"+ left +" and root  becoz left is not null"+ root + " min = "+min );
-			}
-		if (right!=null && right.compareTo(min)<0) {
-			min= right;
-			System.out.println("comparing left"+ right +" and root  becoz right is not null "+ root + " min = "+min );
-		}
-	System.out.println("returning min to recursion call " + min);
-		return min;
-		
+		return min(n.left);
 	}
 	public T min() {
 //		if(isEmpty()) throw new NoSuchElementException();
