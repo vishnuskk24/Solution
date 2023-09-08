@@ -21,6 +21,8 @@ public class BinaryTree<T extends Comparable<T>>  {
 			
 			
 		}
+		
+		
 	}
 	
 //	private boolean isUserDefined(T value) {
@@ -259,6 +261,22 @@ public class BinaryTree<T extends Comparable<T>>  {
 		
 		
 		return  (size()==other.size())?equals(root,other.root): false;
+	}
+	
+	public boolean isBinarySearchTree() {
+		
+		return isBST(root,null,null);
+	}
+	private boolean isBST(Node root,T min, T max) {
+		if(root==null) {
+			return true;
+		}
+		if(min!=null && ((T)root.value).compareTo(min)<=0 || max!=null  && ((T)root.value).compareTo(max)>=0) {
+			return false;
+		};
+//		   taking left child then value higher value needs to be root
+//		taking right child then minimum value needs to be the root 
+		return isBST(root.left, min, (T) root.value)&& isBST(root.right, (T) root.value, max) ;
 	}
 	
 }

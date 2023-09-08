@@ -44,8 +44,10 @@ public class Tester {
 		b1.insert(1);
 		b1.insert(6);
 		b1.insert(8);
-		b1.insert(100);
-		System.out.println(b.equal(b1));
+//		b1.insert(100);
+		System.out.println(b1.find(8));
+		System.out.println(b.isBinarySearchTree());
+//		System.out.println(b.equal(b1));
 	}
 }
 
