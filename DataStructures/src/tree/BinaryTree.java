@@ -240,5 +240,25 @@ public class BinaryTree<T extends Comparable<T>>  {
 		return isEmpty()?noElement():min(root);
 	}
 	
+	private boolean equals(Node root,Node others) {
+		
+		if(root==null && others==null) {
+			return true;
+			
+		}
+		if((root==null&& others!=null) || (root!=null &&others==null)) return false;
+//its preorder trversal -> root               left                          right
+		if(root.value.equals(others.value) && equals(root.left,others.left) && equals(root.right,others.right)) {
+			return true;
+		}
+		System.out.println(root.value +" " + others.value);
+	return false;
+	}
+	
+	public boolean equal(BinaryTree other) {
+		
+		
+		return  (size()==other.size())?equals(root,other.root): false;
+	}
 	
 }
