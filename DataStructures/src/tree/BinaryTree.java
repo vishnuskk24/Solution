@@ -1,4 +1,5 @@
 package tree;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.TreeMap;
@@ -279,9 +280,10 @@ public class BinaryTree<T extends Comparable<T>>  {
 		return isBST(root.left, min, (T) root.value)&& isBST(root.right, (T) root.value, max) ;
 	}
 	
-	private boolean kthNodeFromRoot(int k, Node root) {
+	private boolean kthNodeFromRoot(int k, Node root ,List<T> result) {
 		
 		if(k==0) {
+			result.add((T) root.value);
 			System.out.println(root.value);
 			return false; //  reached kth node
 		}
@@ -293,11 +295,11 @@ public class BinaryTree<T extends Comparable<T>>  {
 		boolean right=true;
 	
 		if(root.left!=null) {
-			left = kthNodeFromRoot(k-1, root.left); // if left is null then leave 
+			left = kthNodeFromRoot(k-1, root.left,result); // if left is null then leave 
 			
 		}
 		if(root.right!=null) {
-			right=	kthNodeFromRoot(k-1, root.right);//if right is nulll then leave
+			right=	kthNodeFromRoot(k-1, root.right,result);//if right is nulll then leave
 			
 		}
 		
@@ -318,13 +320,15 @@ public class BinaryTree<T extends Comparable<T>>  {
 			
 			
 	}
-	public void kthNodeFromRoot(int k) {
+	public List<T> kthNodeFromRoot(int k) {
+		List<T> result = new ArrayList<>();
 		if(isEmpty()) {
 			throw new NoSuchElementException("tree is Empty");
 		}
-		if(kthNodeFromRoot(k, root)) {
+		if(kthNodeFromRoot(k, root,result)) {
 			
 			System.out.println(-1 );
 		}
+		return result;
 	}
 }

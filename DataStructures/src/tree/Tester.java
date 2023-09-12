@@ -55,7 +55,9 @@ public class Tester {
 //		System.out.println(b.isBinarySearchTree());
 		
 //		System.out.println(b.equal(b1));
-		b1.kthNodeFromRoot(8);
+		for(Integer value  : b.kthNodeFromRoot(4)) {
+			System.out.print(value + " ");
+		}
 	}
 }
 
