@@ -282,7 +282,7 @@ public class BinaryTree<T extends Comparable<T>>  {
 	private boolean kthNodeFromRoot(int k, Node root) {
 		
 		if(k==0) {
-			System.out.println(root.value+ " ++++");
+			System.out.println(root.value);
 			return false; //  reached kth node
 		}
 		if(root.left==null && root.right==null &&k>=1) {
@@ -291,13 +291,30 @@ public class BinaryTree<T extends Comparable<T>>  {
 		}
 		boolean left =true;
 		boolean right=true;
+	
 		if(root.left!=null) {
 			left = kthNodeFromRoot(k-1, root.left); // if left is null then leave 
+			
 		}
 		if(root.right!=null) {
-		right=	kthNodeFromRoot(k-1, root.right);//if right is nulll then leave
+			right=	kthNodeFromRoot(k-1, root.right);//if right is nulll then leave
+			
 		}
-		return left|| right;
+		
+//		System.oust.println("root "+ root.value +"k  ->" + k);
+		if(root.left!=null) {
+			
+//			System.out.println("Left tree" + left +" left value - > "+ root.left.value +" k - > " +( k-1));
+		}
+		if(root.right!=null) {
+//			System.out.println("right tree" + right +" right value - > "+ root.right.value+" k - > " + (k-1));
+			
+		}
+		
+		
+//		System.out.println("Left && right" + (left&&right));
+//	Sysout
+		return left && right;
 			
 			
 	}
@@ -306,7 +323,8 @@ public class BinaryTree<T extends Comparable<T>>  {
 			throw new NoSuchElementException("tree is Empty");
 		}
 		if(kthNodeFromRoot(k, root)) {
-			System.out.println(-1);
+			
+			System.out.println(-1 );
 		}
 	}
 }
