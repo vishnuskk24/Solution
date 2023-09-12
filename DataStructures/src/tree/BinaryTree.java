@@ -170,7 +170,7 @@ public class BinaryTree<T extends Comparable<T>>  {
 		}
 		int left = heightOfTree(root.left,height+1);
 		int right = heightOfTree(root.right,height+1);
-		System.out.println(left + " "  + right);
+//		System.out.println(left + " "  + right);
 		return (left>right)? left:right;
 	}
 	
@@ -284,7 +284,7 @@ public class BinaryTree<T extends Comparable<T>>  {
 		
 		if(k==0) {
 			result.add((T) root.value);
-			System.out.println(root.value);
+//			System.out.println(root.value);
 			return false; //  reached kth node
 		}
 		if(root.left==null && root.right==null &&k>=1) {
@@ -330,5 +330,13 @@ public class BinaryTree<T extends Comparable<T>>  {
 			System.out.println(-1 );
 		}
 		return result;
+	}
+	public	void levelOrderTravesal() {
+		for(int i=0;i<heightOfRootNode();i++) {
+			for(T value: kthNodeFromRoot(i)) {
+				System.out.print( value+ " , ");
+			}
+			System.out.println();
+		}
 	}
 }

@@ -15,7 +15,7 @@ public class Tester {
 		b.insert(-1);
 		b.insert(5);
 		
-//		b.insert(100);
+		b.insert(100);
 //		b.insert(-1);
 		
 //		b.insert(20);
@@ -55,9 +55,10 @@ public class Tester {
 //		System.out.println(b.isBinarySearchTree());
 		
 //		System.out.println(b.equal(b1));
-		for(Integer value  : b.kthNodeFromRoot(4)) {
-			System.out.print(value + " ");
-		}
+//		for(Integer value  : b.kthNodeFromRoot(4)) {
+//			System.out.print(value + " ");
+//		}
+		b.levelOrderTravesal();
 	}
 }
 
