@@ -11,6 +11,9 @@ public class Tester {
 		b.insert(6);
 		b.insert(8);
 		b.insert(10);
+		b.insert(0);
+		b.insert(-1);
+		b.insert(5);
 		
 //		b.insert(100);
 //		b.insert(-1);
@@ -37,17 +40,19 @@ public class Tester {
 //		System.out.println(b.heightOfRootNode());
 //		System.out.println(b.min());
 		
-		BinaryTree<Integer> b1 = new BinaryTree<>();
-		b1.insert(7);
-		b1.insert(4);
-		b1.insert(9);
-		b1.insert(1);
-		b1.insert(6);
-		b1.insert(8);
+//		BinaryTree<Integer> b1 = new BinaryTree<>();
+//		b1.insert(7);
+//		b1.insert(4);
+//		b1.insert(9);
+//		b1.insert(1);
+//		b1.insert(6);
+//		b1.insert(8);
 //		b1.insert(100);
-		System.out.println(b1.find(8));
-		System.out.println(b.isBinarySearchTree());
+//		System.out.println(b1.find(8));
+//		System.out.println(b.isBinarySearchTree());
+		
 //		System.out.println(b.equal(b1));
+		b.kthNodeFromRoot(3);
 	}
 }
 
@@ -55,8 +60,8 @@ public class Tester {
 //			4		9
 //			
 //		1     6   8     10
-//							100
-//								   101
+//	 0		5				100
+//-1								   101
 //										105
 //								   104				107
 //							102

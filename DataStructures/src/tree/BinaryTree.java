@@ -279,4 +279,34 @@ public class BinaryTree<T extends Comparable<T>>  {
 		return isBST(root.left, min, (T) root.value)&& isBST(root.right, (T) root.value, max) ;
 	}
 	
+	private boolean kthNodeFromRoot(int k, Node root) {
+		
+		if(k==0) {
+			System.out.println(root.value+ " ++++");
+			return false; //  reached kth node
+		}
+		if(root.left==null && root.right==null &&k>=1) {
+		
+			return true; // tree dont have k depth 
+		}
+		boolean left =true;
+		boolean right=true;
+		if(root.left!=null) {
+			left = kthNodeFromRoot(k-1, root.left); // if left is null then leave 
+		}
+		if(root.right!=null) {
+		right=	kthNodeFromRoot(k-1, root.right);//if right is nulll then leave
+		}
+		return left|| right;
+			
+			
+	}
+	public void kthNodeFromRoot(int k) {
+		if(isEmpty()) {
+			throw new NoSuchElementException("tree is Empty");
+		}
+		if(kthNodeFromRoot(k, root)) {
+			System.out.println(-1);
+		}
+	}
 }
