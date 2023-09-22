@@ -338,6 +338,14 @@ public class BinaryTree<T extends Comparable<T>>  {
 		return left+right;
 			
 	}
+	
+	private T getMax(Node root) {
+		
+		if(root.right==null) {
+			return (T) root.value;
+		}
+		return getMax(root.right);
+	}
 	public List<T> kthNodeFromRoot(int k) {
 		List<T> result = new ArrayList<>();
 		if(isEmpty()) {
@@ -364,5 +372,11 @@ public class BinaryTree<T extends Comparable<T>>  {
 			return;
 		}
 		System.out.println(countLeaves(root));
+	}
+	public T max() {
+		if(isEmpty()) {
+			throw new NoSuchElementException("Tree is Empty");
+		}
+		return getMax(root);
 	}
 }
