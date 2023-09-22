@@ -29,14 +29,14 @@ public class Tester {
 //		b.insert(3);
 //		b.insert(3);b.insert(8);b.insert(26);
 		
-//		b.insert(101);
-//		b.insert(105);
-//		b.insert(107);
-//		b.insert(104);
-//		b.insert(-2);
-//		b.insert(-3);
-//		b.insert(-5);
-//		b.insert(102);
+		b.insert(101);
+		b.insert(105);
+		b.insert(107);
+		b.insert(104);
+		b.insert(-2);
+		b.insert(-3);
+		b.insert(-5);
+		b.insert(102);
 		
 //		System.out.println("done");
 //		System.out.println(b.find(107));
@@ -68,7 +68,10 @@ public class Tester {
 //		b.countLeaves();
 //		System.out.println(b.max());
 //		System.out.println(b.isSiblings(1, 6));
-		System.out.println(b1.contains(-1));
+//		System.out.println(b1.contains(-1));
+		for(Integer value :b1.getAncestor(100000)) {
+			System.out.println(value);
+		}
 	}
 }
 

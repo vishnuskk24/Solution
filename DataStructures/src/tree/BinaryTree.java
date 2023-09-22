@@ -402,6 +402,23 @@ public class BinaryTree<T extends Comparable<T>>  {
 		return(flag)?contains(root.left,value):contains(root.right,value); // instead of using ternary operator we can user if else also it depends on your wish
 	}
 	
+	private boolean getAncestor(Node root, T value, List<T> ret) {
+
+		
+		if(root==null)  return false;
+		
+		if(((T)root.value).equals(value)) {
+			return true; /// we need to return true if the element is present other wise we can return false
+		}
+		ret.add((T)root.value);
+		
+		if((((T)root.value)).compareTo(value)<0) { // if root is less compare to provided value then take right
+			
+			return getAncestor(root.right, value, ret); // 
+		}
+		return getAncestor(root.left, value, ret); // if root is greater then the provided value the we need to choose the left child
+		// above two recursion call will continue until it reaches the provied node or leaf node
+	}	
 	public List<T> kthNodeFromRoot(int k) {
 		List<T> result = new ArrayList<>();
 		if(isEmpty()) {
@@ -452,4 +469,17 @@ public class BinaryTree<T extends Comparable<T>>  {
 		}
 		return contains(root,value);
 	}
+	
+	
+	public List<T> getAncestor(T value){
+		List<T> ret = new ArrayList();
+		
+		if(getAncestor(root,value,ret)) {
+			
+			return ret;
+		}
+		return new ArrayList();// empty list also we can return if the given element is not present we can use contains method also compare to that it will work in single tree traversal
+	}
+
+	
 }
