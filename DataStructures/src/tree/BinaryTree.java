@@ -289,7 +289,7 @@ public class BinaryTree<T extends Comparable<T>>  {
 		}
 		if(root.left==null && root.right==null &&k>=1) {
 		
-			return true; // tree dont have k depth 
+			return true; // tree dont have k depth so we need to print -1
 		}
 		boolean left =true;
 		boolean right=true;
@@ -320,6 +320,24 @@ public class BinaryTree<T extends Comparable<T>>  {
 			
 			
 	}
+	private int countLeaves(Node root) {
+		
+		int left =0;
+		int right=0;
+		if(root.left==null && root.right==null) { //if it is leaf node
+			return 1;
+		}
+		
+		if(root.left!=null) {
+			left=countLeaves(root.left);
+						
+		}
+		if(root.right!=null) {
+			right=countLeaves(root.right);
+		}
+		return left+right;
+			
+	}
 	public List<T> kthNodeFromRoot(int k) {
 		List<T> result = new ArrayList<>();
 		if(isEmpty()) {
@@ -338,5 +356,13 @@ public class BinaryTree<T extends Comparable<T>>  {
 			}
 			System.out.println();
 		}
+	}
+	public void countLeaves() {
+		if(isEmpty()) {
+//			throw new NoSuchElementException("Tree is Empty");
+			System.out.println(0);
+			return;
+		}
+		System.out.println(countLeaves(root));
 	}
 }
