@@ -346,6 +346,43 @@ public class BinaryTree<T extends Comparable<T>>  {
 		}
 		return getMax(root.right);
 	}
+	
+	private boolean isSibblings(Node root,T left, T right) {
+//		System.out.println("finding left parent");
+		T leftParent = findParent(root,left,null);
+//		System.out.println("finding right parent");
+		T rightParent=findParent(root, right,null);
+		
+//		System.out.println("left parent - > " + leftParent + " rightParent  -> " + rightParent);
+		if(leftParent==null || rightParent==null) {
+//			System.out.println("returing null becoz both parent are null");
+			return false;
+		}
+		
+//		System.out.println("comparing both left parent and right parent");
+		return leftParent.equals(rightParent);
+	}
+	
+	
+	private T findParent(Node root, T value,T Parent) {
+		
+		if(root==null) {
+			return null;
+		}
+		if(((T)(root.value)).compareTo(value)==0) {
+			return (T)Parent;
+		}
+//					less
+		if(((T)(root.value)).compareTo(value)<0) {
+			return findParent(root.right, value, (T) root.value);
+		}
+		
+			
+		return findParent(root.left, value, (T) root.value);
+	}
+
+	
+	
 	public List<T> kthNodeFromRoot(int k) {
 		List<T> result = new ArrayList<>();
 		if(isEmpty()) {
@@ -378,5 +415,15 @@ public class BinaryTree<T extends Comparable<T>>  {
 			throw new NoSuchElementException("Tree is Empty");
 		}
 		return getMax(root);
+	}
+	
+	public boolean isSiblings(T left, T right) {
+		
+		if(isEmpty()) {
+			System.out.println("list is empty");
+			return false;
+		}
+//		System.out.println("Caling private methods");
+		return isSibblings(root, left, right);
 	}
 }

@@ -17,7 +17,7 @@ public class Tester {
 //		
 		b.insert(100);
 //		b.insert(90);
-		b.insert(110);
+//		b.insert(110);
 //		b.insert(-1);
 		
 //		b.insert(20);
@@ -29,10 +29,10 @@ public class Tester {
 //		b.insert(3);
 //		b.insert(3);b.insert(8);b.insert(26);
 		
-		b.insert(101);
-		b.insert(105);
-		b.insert(107);
-		b.insert(104);
+//		b.insert(101);
+//		b.insert(105);
+//		b.insert(107);
+//		b.insert(104);
 //		b.insert(-2);
 //		b.insert(-3);
 //		b.insert(-5);
@@ -65,8 +65,9 @@ public class Tester {
 //		b.levelOrderTravesal();
 //		b1.insert(3);
 //		b1.countLeaves();
-		b.countLeaves();
-		System.out.println(b.max());
+//		b.countLeaves();
+//		System.out.println(b.max());
+		System.out.println(b.isSiblings(1, 6));
 	}
 }
 
