@@ -382,6 +382,25 @@ public class BinaryTree<T extends Comparable<T>>  {
 	}
 
 	
+	private boolean contains(Node root,T value) {
+		
+		if(root==null) {// if root is null then it wil be null means leaf node
+			return false;
+		}
+		
+		if(((T)root.value).compareTo(value)==0) {// current value and provided value both are equal
+			return true;
+		}
+		
+
+		boolean flag=true; // these flag will decides for further recursion we need to choose the left or right node 
+		
+		if(((T)root.value).compareTo(value)<0) {  // if block willl execute if root value is less compare to given value then choose right
+			flag = false;
+		}
+		
+		return(flag)?contains(root.left,value):contains(root.right,value); // instead of using ternary operator we can user if else also it depends on your wish
+	}
 	
 	public List<T> kthNodeFromRoot(int k) {
 		List<T> result = new ArrayList<>();
@@ -425,5 +444,12 @@ public class BinaryTree<T extends Comparable<T>>  {
 		}
 //		System.out.println("Caling private methods");
 		return isSibblings(root, left, right);
+	}
+	public boolean contains(T value) {
+		
+		if(isEmpty()) {
+			return false;
+		}
+		return contains(root,value);
 	}
 }

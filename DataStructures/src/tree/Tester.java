@@ -67,7 +67,8 @@ public class Tester {
 //		b1.countLeaves();
 //		b.countLeaves();
 //		System.out.println(b.max());
-		System.out.println(b.isSiblings(1, 6));
+//		System.out.println(b.isSiblings(1, 6));
+		System.out.println(b1.contains(-1));
 	}
 }
 
