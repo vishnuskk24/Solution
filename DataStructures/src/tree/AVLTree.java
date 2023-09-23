@@ -23,10 +23,6 @@ public class AVLTree<T extends Comparable<T>>{
 	
 	private void insert( AVLNode root, T value) {
 		
-		if(isEmpty()) {
-			root=new AVLNode<T>(value);
-			return;
-		}
 		
 		
 		// if it is not empty then you need to start comparing 
@@ -57,6 +53,10 @@ public class AVLTree<T extends Comparable<T>>{
 	}
 	
 	public void insert(T value) {
+		if(isEmpty()) {
+			root=new AVLNode<T>(value);
+			return;
+		}
 		
 		insert(root,value);
 	}
