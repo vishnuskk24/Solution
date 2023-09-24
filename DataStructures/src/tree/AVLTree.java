@@ -26,41 +26,46 @@ public class AVLTree<T extends Comparable<T>>{
 		
 		
 		if(root==null) {
-			System.out.println("location found creating node and initilizing for " + value);
+//			System.out.println("location found creating node and initilizing for " + value);
 			return new AVLNode<T>(value);
 		}
 		
 		// if it is not empty then you need to start comparing 
 		
 		if( ((T)root.value).compareTo(value) ==0) {
-			System.out.println("value aready  exist returing root ");
+//			System.out.println("value aready  exist returing root ");
 			// if it is same value then skip it
 			return root;
 		}
 //                less
 		if(((T)root.value).compareTo(value)<0) { // if root value is less than the inserting valuechoose right sub tree
-			System.out.println("taking right sub tree" );
+//			System.out.println("taking right sub tree" );
 			 // if right sub tree is not null then choose to recursive call
 			root.right =insert(root.right,value);
 		}else
 		{
 			// if left subtree is not empty then pass it to nxt recursive call
-			System.out.println("taking left sub tree");
+//			System.out.println("taking left sub tree");
 			root.left=insert(root.left,value);
 		}
-		System.out.println(" returing root " + root.value);
+//		System.out.println(" returing root " + root.value);
 		
-		root.height =height(root.left)-height(root.right) +1;
+		System.out.println("left height " + height(root.left) + " right height " + height(root.right));
+		root.height =Math.max(height(root.left),height(root.right))+1;
 		
 		// balancefactor 
-		int balanceFactor = height(root.left) - height(root.right);
-		if(balanceFactor>1) {
-			System.out.println("left tree is heavy and need to rotate right");
+		int balanceFactor = balanceFactor(root);
+		if(isLeftHeavy(root)) {
+			System.out.println("left tree is heavy and need to rotate right in "+ root.value +" while adding " + value + " becoz balance factor is "+ balanceFactor);
 			
 		}
-		else {
+		
+		else if(isRightHeavy(root)) {
 			
-			System.out.println("right tree is heavy and need to rotate left");
+			System.out.println("right tree is heavy and need to rotate left in " + root.value+" while adding " + value+ " becoz balance factor is "+ balanceFactor);
+		}
+		else {
+			System.out.println(" tree balanced " + root.value+" while adding " + value+ " becoz balance factor is "+ balanceFactor);
 		}
 		return root;
 	}
@@ -78,7 +83,17 @@ public class AVLTree<T extends Comparable<T>>{
 	private int height(AVLNode root) {
 		return root==null?-1:root.height; 
 	}
-	
+	private boolean isLeftHeavy(AVLNode root) {
+		return balanceFactor(root)>1;
+		
+	}
+	private boolean isRightHeavy(AVLNode root) {
+		return balanceFactor(root)<-1;
+	}
+	private Integer balanceFactor(AVLNode root) {
+//				       returing 0 becoz if it is leaf node  becoz height method will return -1
+		return root==null?0: height(root.left)-height(root.right);
+	}
 	private boolean contains( AVLNode root,T value) {
 		
 		
@@ -98,7 +113,7 @@ public class AVLTree<T extends Comparable<T>>{
 	public boolean contains(T value) {
 		
 		if(isEmpty()) {
-			System.out.println("tree is empty");
+//			System.out.println("tree is empty");
 		}
 		return contains(root, value);
 	}
