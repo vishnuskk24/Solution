@@ -9,7 +9,7 @@ public class AVLTree<T extends Comparable<T>>{
 		private AVLNode<T> left;
 //		private AVLNode<T> left;
 		private AVLNode<T> right;
-		
+		private int height;
 		AVLNode(T data){
 			
 			this.value=data;
@@ -49,6 +49,8 @@ public class AVLTree<T extends Comparable<T>>{
 			root.left=insert(root.left,value);
 		}
 		System.out.println(" returing root " + root.value);
+		
+		root.height =height(root.right)-height(root.left) +1;
 		return root;
 	}
 	
@@ -62,6 +64,9 @@ public class AVLTree<T extends Comparable<T>>{
 	root= 	insert(root,value);
 	}
 	
+	private int height(AVLNode root) {
+		return root==null?-1:root.height; 
+	}
 	
 	private boolean contains( AVLNode root,T value) {
 		
