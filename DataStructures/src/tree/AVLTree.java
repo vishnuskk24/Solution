@@ -50,7 +50,18 @@ public class AVLTree<T extends Comparable<T>>{
 		}
 		System.out.println(" returing root " + root.value);
 		
-		root.height =height(root.right)-height(root.left) +1;
+		root.height =height(root.left)-height(root.right) +1;
+		
+		// balancefactor 
+		int balanceFactor = height(root.left) - height(root.right);
+		if(balanceFactor>1) {
+			System.out.println("left tree is heavy and need to rotate right");
+			
+		}
+		else {
+			
+			System.out.println("right tree is heavy and need to rotate left");
+		}
 		return root;
 	}
 	
