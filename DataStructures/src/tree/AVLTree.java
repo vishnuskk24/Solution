@@ -106,6 +106,24 @@ public class AVLTree<T extends Comparable<T>>{
 		return (left>right)?left:right;
 	}
 	public Integer getHeight() {
+		if(isEmpty()) return -1;
 		return  getHeight(root, 0);
+	}
+	
+	private boolean isBalanced(AVLNode root) {
+		
+
+		int left = getHeight(root.left, 0);
+		int right = getHeight(root.right, 0);
+		
+		return Math.abs(right-left)<=1; 
+		
+		
+		
+		
+	}
+	public Boolean isBalanced() {
+		
+		return isBalanced(root);
 	}
 }
