@@ -50,26 +50,72 @@ public class AVLTree<T extends Comparable<T>>{
 		}
 //		System.out.println(" returing root " + root.value);
 		
-		System.out.println("left height " + height(root.left) + " right height " + height(root.right));
+//		System.out.println("left height " + height(root.left) + " right height " + height(root.right));
 		root.height =Math.max(height(root.left),height(root.right))+1;
 		
 		// balancefactor 
-		int balanceFactor = balanceFactor(root);
-		if(isLeftHeavy(root)) {
-			System.out.println("left tree is heavy and need to rotate right in "+ root.value +" while adding " + value + " becoz balance factor is "+ balanceFactor);
-			
-		}
+	root=	balance(root);
 		
-		else if(isRightHeavy(root)) {
-			
-			System.out.println("right tree is heavy and need to rotate left in " + root.value+" while adding " + value+ " becoz balance factor is "+ balanceFactor);
+		return root;
+	}
+	
+	private AVLNode balance(AVLNode root) {
+		if(isLeftHeavy(root)) {
+			if(balanceFactor(root.left)<0) {
+				System.out.println("rotate left "+ root.left.value); // once the left rotation is done then  it will form left skew
+				root=leftRotate(root);
+			}
+			root=rightRotate(root);
+			System.out.println("right rotate "+ root.value);
 		}
-		else {
-			System.out.println(" tree balanced " + root.value+" while adding " + value+ " becoz balance factor is "+ balanceFactor);
+		else if(isRightHeavy(root)) {
+			// if it is right heavy then take the right node
+			if(balanceFactor(root.right)>0) {
+				System.out.println("rotate right  "+ root.right.value);
+				root = rightRotate(root.right);
+			}
+			root = leftRotate(root);
+			System.out.println("rotate left " + root.value);
+			
 		}
 		return root;
 	}
 	
+	private AVLNode leftRotate(AVLNode root) {
+		
+		var newRoot=root.right;            // when we are rotating 10 makig 20's left at that time 15 will get clash so  take 10 and take 15
+		
+		                                                                                                        //     10
+//			if the value is null of if any value is present then it il swap                                   //           20
+     	root.right=newRoot.left ;                                                                             //       15      30
+		
+		newRoot.left=root; //   make 10 as 20's left  and calculate height after all assignment calcuate height
+		setHeight(root);
+		setHeight(newRoot);
+		
+		return newRoot;
+	}
+	private void setHeight(AVLNode node) { 
+		
+		node.height = Math.max(height(node.left), height(node.right))+1;
+		
+	}
+	private AVLNode rightRotate(AVLNode root) {
+		                                                  //   30
+		                                                //  20
+		                                               // 10  15
+		var newRoot = root.left;// 20
+		
+		 // if any value is present ten clash will happen
+	    root.left=newRoot.right;   //making 15 to 30 child
+	
+		newRoot.right=root;
+		 
+		setHeight(root);
+		setHeight(newRoot);
+		return newRoot;
+		
+	}
 	public boolean isEmpty() {
 		return root==null;
 	}
@@ -158,3 +204,41 @@ public class AVLTree<T extends Comparable<T>>{
 		return isBalanced(root);
 	}
 }
+
+
+
+
+
+
+
+
+
+//above returning root in insert method
+
+//int balanceFactor = balanceFactor(root);
+//if(isLeftHeavy(root)) {
+//	if(balanceFactor(root.left)>0) {
+//		System.out.println("left skew");
+//		System.out.println("left heavy single rotation --  right rotation  ");
+//	}
+//	if(balanceFactor(root.left)<0) {
+//		System.out.println("left of right subtree  double rotation   left  right rotation");
+//	}
+////	System.out.println("left tree is heavy and need to rotate right in "+ root.value +" while adding " + value + " becoz balance factor is "+ balanceFactor);
+//	
+//}
+//
+//else if(isRightHeavy(root)) {
+//	
+//	if(balanceFactor(root.right)>0) {
+//		System.out.println("double rotation right - left rotation");
+//	}
+//	if(balanceFactor(root.right)<0) {
+//		System.out.println("right skew");
+//		System.out.println("single roatation left rotation ");
+//	}
+////	System.out.println("right tree is heavy and need to rotate left in " + root.value+" while adding " + value+ " becoz balance factor is "+ balanceFactor);
+//}
+//else {
+//	System.out.println(" tree balanced " + root.value+" while adding " + value+ " becoz balance factor is "+ balanceFactor);
+//}
