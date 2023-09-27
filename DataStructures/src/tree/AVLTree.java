@@ -52,7 +52,7 @@ public class AVLTree<T extends Comparable<T>>{
 		
 //		System.out.println("left height " + height(root.left) + " right height " + height(root.right));
 		root.height =Math.max(height(root.left),height(root.right))+1;
-		
+		setHeight(root);
 		// balancefactor 
 	root=	balance(root);
 		
@@ -63,7 +63,7 @@ public class AVLTree<T extends Comparable<T>>{
 		if(isLeftHeavy(root)) {
 			if(balanceFactor(root.left)<0) {
 				System.out.println("rotate left "+ root.left.value); // once the left rotation is done then  it will form left skew
-				root=leftRotate(root);
+				root.right=leftRotate(root);
 			}
 			root=rightRotate(root);
 			System.out.println("right rotate "+ root.value);
@@ -72,7 +72,7 @@ public class AVLTree<T extends Comparable<T>>{
 			// if it is right heavy then take the right node
 			if(balanceFactor(root.right)>0) {
 				System.out.println("rotate right  "+ root.right.value);
-				root = rightRotate(root.right);
+				root .left= rightRotate(root.right);
 			}
 			root = leftRotate(root);
 			System.out.println("rotate left " + root.value);
