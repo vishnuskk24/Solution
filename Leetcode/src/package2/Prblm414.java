@@ -1,5 +1,7 @@
 package package2;
 
+import java.util.Arrays;
+
 public class Prblm414 {
 
 //	third maximum number
