@@ -27,4 +27,4 @@ public class Prblm21 {
             list1=t;
        }
        return result;
-    }
+    }	
