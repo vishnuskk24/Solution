@@ -1,9 +1,9 @@
 package Heap;
 
 public class Heap<T extends Comparable<T>> {
-
-	private T[] arr;
-	private int size;
+ // finding parent formula  - >  (child index-1)/2
+	private  T[] arr;
+	private  int size;
 	Heap(int size) {
 		this.arr = (T[])new Object[size];
 		
@@ -34,8 +34,15 @@ public class Heap<T extends Comparable<T>> {
 		arr[size++] = value;
 //		if the adding item is greater then the parent item then we need o bubble up   now index = that size variable
 		bubbleUp();
+		print(size,arr);
 	}
-	
+	public  void print(int size , T[] arr) {
+		System.out.print("[");
+		for(int i=0;i<size;i++) {
+			System.out.println(arr[i]+",");
+		}
+		System.out.print("]");
+	}
 	
 	 
 }
