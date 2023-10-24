@@ -4,8 +4,12 @@ public class Heap<T extends Comparable<T>> {
  // finding parent formula  - >  (child index-1)/2
 	private  T[] arr;
 	private  int size;
+	@SuppressWarnings("unchecked")
 	Heap(int size) {
-		this.arr = (T[])new Object[size];
+		arr=(T[])new Comparable[size];
+	
+		System.out.println("heap is ready");
+//		arr = ((T[])new Object[size]);
 		
 	}
 	private void swap(int first ,int second) {
@@ -24,24 +28,26 @@ public class Heap<T extends Comparable<T>> {
 	}
 	private void bubbleUp() {
 		var index=size-1;
-		checkHeap();
-		while(index>0 && arr[index].compareTo(arr[parent(index)])>0) {  //these while loop will execute until the parent item is greater then current item 
+		checkHeap();    // (T)root.value).compareTo(value) ==0
+		while(index>0 && ((T)(arr[index])).compareTo((T)(arr[parent(index)]))>0) {  //these while loop will execute until the parent item is greater then current item 
 			swap(index,parent(index) );
 			index=parent(index);  // continously we need to change the index and we need to check the condition 
 		}
 	}
 	public void insert(T value) {
+		
 		arr[size++] = value;
 //		if the adding item is greater then the parent item then we need o bubble up   now index = that size variable
 		bubbleUp();
 		print(size,arr);
+		System.out.println("size of heap " + size);
 	}
 	public  void print(int size , T[] arr) {
 		System.out.print("[");
 		for(int i=0;i<size;i++) {
-			System.out.println(arr[i]+",");
+			System.out.print(arr[i]+",");
 		}
-		System.out.print("]");
+		System.out.println("]");
 	}
 	
 	 
