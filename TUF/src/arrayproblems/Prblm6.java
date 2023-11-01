@@ -2,6 +2,7 @@ package arrayproblems;
 
 public class Prblm6 {
 //	move Zeros
+//	https://leetcode.com/problems/move-zeroes/description/
 	 public void moveZeroes(int[] nums) {
 	       int pointer1=0;
 	        for(int i=0;i<nums.length;i++){
