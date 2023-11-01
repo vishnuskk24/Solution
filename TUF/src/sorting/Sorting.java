@@ -1,4 +1,4 @@
-	package sorting;
+		package sorting;
 
 public class Sorting {
 	static void selection_sort(int arr[], int n) {
