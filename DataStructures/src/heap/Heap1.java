@@ -1,12 +1,12 @@
-package Heap;
+package heap;
 
-public class Heap<T extends Comparable<T>> {
+public class Heap1<T extends Comparable<T>> {
  // finding parent formula  - >  (child index-1)/2
 	private  T[] arr;
 	private  int size;
 	@SuppressWarnings("unchecked")
-	Heap(int size) {
-		arr=(T[])new Comparable[size];
+	Heap1(int size) {
+		arr=(T[]) new Comparable[size];
 	
 		System.out.println("heap is ready");
 //		arr = ((T[])new Object[size]);
