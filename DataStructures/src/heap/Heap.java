@@ -152,5 +152,23 @@ private int getRightChildIndex(int index) {
 			}
 	}
 	
+	public T[] reverseSort() {
+	if(isEmpty()) throw new IllegalStateException("Heap is Empty :(");
+		T[] arr = (T[]) new Comparable[size];
+		int i=0;
+			while(!isEmpty()) {
+				arr[i] = this.remove();
+				i++;
+				
+			}
+			return arr;
+	}
+	public T getKthElement(int i) {
+		
+		if(i >=size) return null;
+		
+		return reverseSort()[i-1];
+		
+	}
 
 }

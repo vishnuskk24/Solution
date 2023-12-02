@@ -12,15 +12,15 @@ class Kid<T> implements Comparable<T>{
 }
 public class Tester {
 	public static void main(String[] args) {
-//		Heap<Integer> heap = new Heap<>(20);
+		Heap<Integer> heap = new Heap<>(20);
 //		System.out.println("before array");
-//		int[] num = {2,1,4,5,3,6};//,11,10,12,17,15,19,20,30,33,36,34,37,33};
-//		System.out.println("after array");
-//		for(int i : num) {
-//			System.out.println("inserting " + i);
-////			break;
-//			heap.insert(i);
-//		}
+		int[] num = {2,1,4,5,3,6};//,11,10,12,17,15,19,20,30,33,36,34,37,33};
+//		System.out.println("aftesr array");
+		for(int i : num) {
+			System.out.println("inserting " + i);
+//			break;
+			heap.insert(i);
+		}
 //		heap.print();
 ////		System.out.println("removing - > " + heap.remove());
 ////		heap.print();
@@ -33,12 +33,18 @@ public class Tester {
 //		
 ////		heap.print();
 ////		System.out.println(heap.remove());
-//		
-////		while(!heap.isEmpty()) {
-////			System.out.println(heap.remove());
-////			heap.print();
-////		
-////		}
+		Integer[] result = new Integer[10]; 
+		int c= 0;
+		while(!heap.isEmpty()) {
+//			System.out.println(heap.remove());
+			
+			result[c] = heap.remove();
+			c++;
+			if(c>=0) System.out.println(result[c-1]);
+//			heap.print();
+		
+		}
+		System.out.println(result[4] + " 6 largest");
 //		for(int j:sortedarray) {
 //			System.out.println(j);
 //		}
@@ -47,19 +53,19 @@ public class Tester {
 		
 		
 		
-		Heap<String> heap = new Heap<>(10);
-		heap.insert("Vishnu");
-		heap.insert("Saravana");
-		heap.insert("Ashok");
-		heap.insert("Raj");
-		heap.insert("Uma");
-		heap.insert("Murugesan");
-		heap.insert("Arrun");
-		heap.insert("Arsun");
-		while(!heap.isEmpty()) {
-			System.out.println(heap.remove());
-			
-		}
+//		Heap<String> heap = new Heap<>(10);
+//		heap.insert("Vishnu");
+//		heap.insert("Saravana");
+//		heap.insert("Ashok");
+//		heap.insert("Raj");
+//		heap.insert("Uma");
+//		heap.insert("Murugesan");
+//		heap.insert("A		rrun");
+//		heap.insert("Arsun");
+//		while(!heap.isEmpty()) {
+//			System.out.println(heap.remove());
+//			
+//		}
 //		System.out.println("insertion is done");
 //		System.out.println(heap.remove());
 //		heap.print();
@@ -105,3 +111,10 @@ public class Tester {
 //		System.out.println();
 	}
 }
+
+
+
+//   need to complete  priority queues	
+//   Heapify
+//   Kth largest element
+//   assignments
