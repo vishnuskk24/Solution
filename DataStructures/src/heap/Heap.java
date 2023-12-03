@@ -1,14 +1,16 @@
 package heap;
 
-public class Heap<T extends Comparable<T> > {
+public class Heap<T extends Comparable<? super T> > {
 	
 	private T[] arr ;
+	private T[] rev;
 	private int size;
 	
 	public Heap(int size) {
 		
 //		this.size=size;
 		this.arr= (T[]) new Comparable[size];
+		this.rev= (T[]) new Object[size];
 		
 		
 	}
@@ -152,16 +154,17 @@ private int getRightChildIndex(int index) {
 			}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public T[] reverseSort() {
 	if(isEmpty()) throw new IllegalStateException("Heap is Empty :(");
-		T[] arr = (T[]) new Comparable[size];
+//		this.rev = (T[]) new Comparable[size];
 		int i=0;
 			while(!isEmpty()) {
-				arr[i] = this.remove();
+				rev[i] = this.remove();
 				i++;
 				
 			}
-			return arr;
+			return rev;
 	}
 	public T getKthElement(int i) {
 		

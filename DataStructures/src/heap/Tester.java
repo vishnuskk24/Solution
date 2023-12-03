@@ -33,6 +33,9 @@ public class Tester {
 //		
 ////		heap.print();
 ////		System.out.println(heap.remove());
+		System.out.println("before reverse sort");
+		Integer[] rs = heap.reverseSort();
+		System.out.println("after reverse sort");
 		Integer[] result = new Integer[10]; 
 		int c= 0;
 		while(!heap.isEmpty()) {
