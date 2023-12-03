@@ -173,4 +173,10 @@ public class Array<T> {
 		
 		return resp;
 	}
+	public T get(int index) {
+		if(index >=size()) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		return this.arr[index];
+	}
 }

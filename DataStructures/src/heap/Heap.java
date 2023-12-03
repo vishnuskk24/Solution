@@ -1,6 +1,10 @@
 package heap;
 
-public class Heap<T extends Comparable<? super T> > {
+import java.util.Arrays;
+
+import ArraysList.Array;
+
+public class Heap<T extends Comparable<T> > {
 	
 	private T[] arr ;
 	private T[] rev;
@@ -10,7 +14,7 @@ public class Heap<T extends Comparable<? super T> > {
 		
 //		this.size=size;
 		this.arr= (T[]) new Comparable[size];
-		this.rev= (T[]) new Object[size];
+		
 		
 		
 	}
@@ -154,23 +158,40 @@ private int getRightChildIndex(int index) {
 			}
 	}
 	
-	@SuppressWarnings("unchecked")
-	public T[] reverseSort() {
+	private Heap takeCopy() {
+		Heap<T> h = new Heap<>(size);
+		for(int i = 0;i<size;i++) {
+			h.arr[i]=this.arr[i];
+			h.size++;
+		}
+		return h;
+	}
+	
+	public Array<T> reverseSort() {
 	if(isEmpty()) throw new IllegalStateException("Heap is Empty :(");
 //		this.rev = (T[]) new Comparable[size];
+	Array<T> res = new Array<>();
 		int i=0;
-			while(!isEmpty()) {
-				rev[i] = this.remove();
+		Heap<T> h = takeCopy();
+		System.out.println();
+			while(!h.isEmpty()) {
+//				System.out.println("inserting in heap line 176");
+			res.insert(h.remove());
 				i++;
 				
 			}
-			return rev;
+			
+//			System.out.println("converting into array in reverse line 173");
+			return res;
 	}
 	public T getKthElement(int i) {
+//		System.out.println("index - > " + i + " size - > " + size + " inside kth largest number");
 		
-		if(i >=size) return null;
+		Array<T> rev = reverseSort();
 		
-		return reverseSort()[i-1];
+		if(i >rev.size() || i<=0) return null;
+		
+		return  rev.get(i-1);
 		
 	}
 

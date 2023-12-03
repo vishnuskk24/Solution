@@ -1,5 +1,6 @@
 package heap;
 
+import ArraysList.Array;
 
 class Kid<T> implements Comparable<T>{
 
@@ -33,21 +34,31 @@ public class Tester {
 //		
 ////		heap.print();
 ////		System.out.println(heap.remove());
-		System.out.println("before reverse sort");
-		Integer[] rs = heap.reverseSort();
-		System.out.println("after reverse sort");
-		Integer[] result = new Integer[10]; 
-		int c= 0;
-		while(!heap.isEmpty()) {
-//			System.out.println(heap.remove());
-			
-			result[c] = heap.remove();
-			c++;
-			if(c>=0) System.out.println(result[c-1]);
-//			heap.print();
+		System.out.println("calling reverse");
+		Array<Integer> a = heap.reverseSort();
 		
-		}
-		System.out.println(result[4] + " 6 largest");
+		System.out.println("before priniting" + a.size());
+		a.print();
+		System.out.println("after priniting +++++++++++++");
+		
+		int i = 6;
+		
+		System.out.println(i + " th largest element " + heap.getKthElement(i));
+		
+		
+		
+//		Integer[] result = new Integer[10]; 
+//		int c= 0;
+//		while(!heap.isEmpty()) {
+////			System.out.println(heap.remove());
+//			
+//			result[c] = heap.remove();
+//			c++;
+//			if(c>=0) System.out.println(result[c-1]);
+////			heap.print();
+//		
+//		}
+//		System.out.println(result[4] + " 6 largest");
 //		for(int j:sortedarray) {
 //			System.out.println(j);
 //		}
