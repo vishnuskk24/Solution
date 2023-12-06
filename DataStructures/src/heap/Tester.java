@@ -1,5 +1,7 @@
 package heap;
 
+import java.util.Arrays;
+
 import ArraysList.Array;
 
 class Kid<T> implements Comparable<T>{
@@ -45,7 +47,14 @@ public class Tester {
 		
 		System.out.println(i + " th largest element " + heap.getKthElement(i));
 		
+//      0 1 2 3 4 5
+//	    5,2,8,3,1,4
+//		8,3,5,2,1,4
+		System.out.println("Doing heapify");
+		Integer[] arr = {20,30,10,11,1,17,19,22,23,27,42,43,57,86,88,90,92}; 
 		
+		heap.heapify(arr);
+		System.out.println(Arrays.toString(arr));
 		
 //		Integer[] result = new Integer[10]; 
 //		int c= 0;
@@ -62,7 +71,7 @@ public class Tester {
 //		for(int j:sortedarray) {
 //			System.out.println(j);
 //		}
-////		heap.insert(10);
+////		heap.insert(10); 
 ////		heap.insert(5);
 		
 		
@@ -125,6 +134,9 @@ public class Tester {
 //		System.out.println();
 	}
 }
+//		8,
+//	3,     5, 
+//  2 , 1,  4
 
 
 

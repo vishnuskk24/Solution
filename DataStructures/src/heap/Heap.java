@@ -194,5 +194,51 @@ private int getRightChildIndex(int index) {
 		return  rev.get(i-1);
 		
 	}
+	
+	private void heapify(T[] arr, int index) {
+//		System.out.println("current value " + arr[index] +" index  ->  " + index);
+		var largerIndex = index;
+		var leftChildIndex= getLeftChildIndex(index);
+		
+		if(leftChildIndex<arr.length &&  arr[leftChildIndex].compareTo(arr[largerIndex])>0) {
+//			System.out.println("current index " + arr[index] +" index  ->  " + index + " left child greater " + " left child  " + arr[leftChildIndex]);
+			largerIndex=leftChildIndex;
+		}
+		var rightChildIndex = getRightChildIndex(index);
+		
+		if(rightChildIndex<arr.length&& arr[rightChildIndex].compareTo(arr[largerIndex])>0) {
+//			System.out.println("current index " + arr[index] +" index  ->  " + index + "right child also greater right child " + arr[rightChildIndex]);
+			largerIndex=rightChildIndex;
+		}
+		
+		if(largerIndex==index) {
+			if(leftChildIndex>arr.length && rightChildIndex>arr.length) {
+				
+//			System.out.println("returing current true done heapify -> " + arr[index] +" left index ->" + arr[leftChildIndex] +"right index ->"+ arr[rightChildIndex]);
+			}
+			return;
+		}
+		swap(arr,index,largerIndex);
+		heapify(arr,largerIndex); // if the value is not in right place then we need to move it recursively until it reaches the right place either it is parent or it is in child/leaf node
+		
+	}
+	public void swap(T[] arr, int first, int second) {
+//		System.out.println(Arrays.toString(arr));
+//		System.out.println("Swaping " +arr[first] +"  index -> " + first +"\t and " + arr[second] +"  index -> " +second);
+		T temp = arr[first];
+		arr[first] = arr[second];
+		arr[second] = temp;
+		
+	}
+	public  void heapify(T[] arr) {
+		
+		var lastParentIndex = arr.length/2-1;
+//		System.out.println("last parent ->  index" + lastParentIndex + " value - > " +arr[lastParentIndex]);
+		System.out.println("starting index " + lastParentIndex);
+		for(int i =lastParentIndex;i>=0;i--) {
+			System.out.println("current index " + i);
+			this.heapify(arr,i);
+		}
+	}
 
 }
