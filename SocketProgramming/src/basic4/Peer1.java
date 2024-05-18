@@ -130,6 +130,10 @@ public class Peer1 {
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the opposite ip  ");
+		toSendIp = sc.next();
+		
 		ip=getIp();
 		new Peer1();
 		
