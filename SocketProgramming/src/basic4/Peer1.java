@@ -18,13 +18,14 @@ public class Peer1 {
 	    private DataInputStream in  =  null;
 	    Integer peer1Serverport=5500;
 	    Integer peer2Serverport=5501;
+	    static String toSendIp ="";
 	    static String ip = "127.0.0.1";
 	    private DataOutputStream out = null;
 	    
 	    Thread clientthread =  new Thread(()->{
 			try {
 				
-				socket =  new Socket(ip,peer2Serverport);
+				socket =  new Socket(toSendIp,peer2Serverport);
 				System.out.println("connection done client");
 				System.out.println("My port ->"+socket.getPort());
 				System.out.println("My address - >"+ socket.getInetAddress());
