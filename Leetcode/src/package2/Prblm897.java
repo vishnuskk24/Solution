@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Prblm897 {
 
-
+//	10,30,524
     List<Integer> nodes =  new ArrayList<>();
     
     public void load(TreeNode tree)
