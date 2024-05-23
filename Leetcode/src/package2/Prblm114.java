@@ -1,9 +1,12 @@
 package package2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Prblm114 {
 
 	
-	 List<TreeNode> nodes = new ArrayList();
+	 List<TreeNode> nodes = new ArrayList<>();
 
 	    public void loadList(TreeNode tree){
 	        if(tree==null){
