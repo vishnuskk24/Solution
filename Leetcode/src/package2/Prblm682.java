@@ -21,7 +21,7 @@ public class Prblm682 {
                   stack.push((2*Integer.parseInt(stack.peek()))+"");
                
                 
-            }
+            }   
         }else{
            
             if(!stack.isEmpty()){
