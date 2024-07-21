@@ -25,10 +25,12 @@ public class Peer2 {
 	    Thread serverthread =  new Thread(()->{
 	
 			 try
-		        {	InetAddress bindAddr = InetAddress.getByName(ip);
+		        {	
+//				 System.out.println("");
+				 InetAddress bindAddr = InetAddress.getByName(ip);
 		        	 server = new ServerSocket(peer2Serverport, 50, bindAddr);
 	            
-		        	
+		        	 System.out.println("sever initiated in ip " + ip + " and the port " + peer2Serverport);
 		        	System.out.println("Server is waiting ______");
 		           socket = server.accept();
 		           System.out.println("accepted by server connected to");
@@ -61,7 +63,8 @@ public class Peer2 {
 
 		Thread clientthread =  new Thread(()->{
 			try {
-				socket =  new Socket(toSendIp,peer1Serverport);
+				System.out.println("requesting  server ip  - > " + toSendIp + " and the port " + peer1Serverport);
+				socket =  new Socket(toSendIp,peer1Serverport); 
 				System.out.println("connection done client");
 				System.out.println("My port ->"+socket.getPort());
 				System.out.println("My address - >"+ socket.getInetAddress());
@@ -129,11 +132,12 @@ public class Peer2 {
 		
 
 		public static void main(String[] args) {
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Enter the opposite ip    ");
-			toSendIp = sc.next();
-			
-			ip=getIp();
+//			Scanner sc = new Scanner(System.in);
+//			System.out.println("Enter the opposite ip    ");
+//			toSendIp = sc.next();
+			toSendIp = "192.168.5.120";
+//			ip=getIp();
+			ip = "192.168.5.194";
 			new Peer2();
 			
 			System.out.println();
