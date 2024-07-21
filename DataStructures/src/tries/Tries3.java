@@ -1,6 +1,8 @@
 package tries;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Tries3 { //  tries using hash table
 	
@@ -29,9 +31,16 @@ public class Tries3 { //  tries using hash table
 			return children.values().toArray(new Node[0]);
 		}
 
+		public boolean haveAnyChild() {
+			return getAllChildren().length>0;
+		}
+		public void removeChild(Character c) {
+			
+			children.remove(c);
+		}
 		@Override
 		public String toString() {
-			return "Node [value=" + value + ", children=" + children + ", isEndOfWord=" + isEndOfWord + "]\n";
+			return "value=" + value + ", children=" + children + ", isEndOfWord=" + isEndOfWord + "\n";
 		}
 		
 	}
@@ -52,7 +61,7 @@ public class Tries3 { //  tries using hash table
 			
 		}
 		current.isEndOfWord=true;
-		System.out.println(root);
+//		System.out.println(root);
 	}
 	
 	public boolean isPresent(String s) {
@@ -118,5 +127,85 @@ public class Tries3 { //  tries using hash table
 		System.out.println(root.value);
 		
 	}
+	public void removeWord(String s) {
+		if(s==null)  return;
+		System.out.println(root + " initial ++++++++++++++");
+		removeWord(root,s.toCharArray(),0);
+	}
 
+	private void removeWord(Node root,char[] arr,int index) {
+		
+		
+		if(root==null) {
+			System.out.println("root null so return");
+			return;
+		}
+		if(index==arr.length) {
+			if(root.isEndOfWord==false) {System.out.println("word is not exist");}
+			
+			root.isEndOfWord=false;
+			return;
+			
+		}
+		Character childindex =  arr[index];
+		Node child = root.getChild(childindex);
+		
+		removeWord(child,arr,index+1);
+		
+		if(! child.haveAnyChild() && !child.isEndOfWord) {  // if it is an end of word / having another child
+			System.out.println("===============================");
+			System.out.println("deleting " +child + "  \t becoz it is not having any child and it is not an end of the word");
+			System.out.println("===============================");
+			root.removeChild(childindex);
+		}
+		
+		
+		
+	}
+	public List<String> getSuggestion(String s) {
+		List<String> result =  new ArrayList<>();
+		
+//		if(!isPresent(s)) {
+//			return result; //  if the string is not present the return the empty list
+//		}
+		Node lastRoot =  getRootOfLastLetter(s);
+		getSuggestion(lastRoot,  result,s);
+		
+		return result;
+		
+		
+	}
+	private Node getRootOfLastLetter(String s) {
+		
+		Node rest = root;
+		
+		if(s==null || rest==null) return rest;
+		s=s.trim();
+		for(char c : s.toCharArray()) {
+			if(rest.getChild(c)==null) return null;
+			rest=rest.getChild(c);
+		}
+//		System.out.println("returining node  -> " + rest);
+		
+		return rest;
+		
+	}
+	
+	private void getSuggestion(Node root, List<String> result ,String current)
+	{
+		if(root==null)return;
+		if(root.isEndOfWord) {
+			result.add(current);
+			
+		}
+		if(!root.haveAnyChild()) {
+			return;
+		}
+		for(Node n : root.getAllChildren()) {
+			
+			getSuggestion(n, result, current+n.value);
+		}
+		
+		
+	}
 }
