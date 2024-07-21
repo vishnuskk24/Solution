@@ -25,6 +25,9 @@ public class Tries3 { //  tries using hash table
 		public Node getChild(Character c) {
 			return children.get(c);
 		}
+		public Node[] getAllChildren() {
+			return children.values().toArray(new Node[0]);
+		}
 
 		@Override
 		public String toString() {
@@ -90,5 +93,30 @@ public class Tries3 { //  tries using hash table
 		}
 	}
 
+	public void preOrderTraversal() {
+		preOrderTraversal(root);
+		
+	}
+	private void preOrderTraversal(Node root) {
+		System.out.println(root.value);
+		for(Node n : root.getAllChildren()) {
+			preOrderTraversal(n);
+		}
+		
+	}
+	
+	
+	public void postOrderTraversal() {
+		postOrderTraversal(root);
+		
+	}
+	private void postOrderTraversal(Node root) {
+		
+		for(Node n : root.getAllChildren()) {
+			postOrderTraversal(n);
+		}
+		System.out.println(root.value);
+		
+	}
 
 }
