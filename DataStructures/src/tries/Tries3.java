@@ -208,4 +208,33 @@ public class Tries3 { //  tries using hash table
 		
 		
 	}
+	
+	  private String getString(Node root){ //  exercise 3
+          Node current = root;
+          String ret ="";
+          if(current!=null) {
+                 ret=ret+current.value;
+          }
+      while(current!=null && current.getAllChildren().length==1 && current.isEndOfWord==false){
+
+       
+          current=current.getAllChildren()[0];
+          // System.out.println(current.value + " +++");
+             ret=ret+current.value;
+
+      }
+      return ret;
+  }
+     
+  public String longestCommonPrefix() {
+
+      
+    
+     String ret = getString(root);
+//     System.out.println(ret);
+
+  //    if((ret.trim()).length()==1) return "";
+      
+      return ret.trim();
+  }
 }
