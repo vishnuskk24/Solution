@@ -237,4 +237,25 @@ public class Tries3 { //  tries using hash table
       
       return ret.trim();
   }
+
+  public Integer countWords() {
+	  return countWords(root);
+  }
+  
+  private Integer count(Node root,int count) { 
+	  
+//	  int total=0;
+	  for(Node n : root.getAllChildren()) {
+		  if(n.isEndOfWord==true) count++;
+		  count=count(n,count);
+	  }
+	  return count;
+  }
+  
+private Integer countWords(Node root) {
+	
+	
+	
+	return count(root,0);
+}
 }
