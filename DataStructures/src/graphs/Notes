@@ -1,0 +1,132 @@
+used in gps
+
+we are using graphs to represent connected object 
+such as routers in a network,  people in a social media
+graps are similiar to tree that consist of node and vertices
+
+if two nodes are directly connected we say it as neighbours
+
+if graph have direction we can say it is an directed graph
+
+edges also have weight
+this weight shows how strong the connection is
+
+another application of graph is finding the shortest path 
+
+3. adjacency matrix
+====================
+graph is represeted as an matrix 
+
+drawbacks -> it takes more space 
+
+let say if we are having 10 nodes in that case 
+10 X 10  matrix is needed
+ 	
+
+so adding new node the time compleity is O(n^2)
+	mary  bob  jack
+mary     0     1    0 
+bob       0    0    1
+jack      1    0    0
+
+
+ths above matri shows mary -> bob -> jack - > mary
+
+it shows finally it made circle/loop
+
+if i add 4th node means we have to create an one more 2D array 4 X 4
+so it is taking O(n^2) as a time complexity
+
+
+we can optimize this issue by preallocation large memory 
+but it wil waste memory
+while calculating the compleity 
+they will represent in the form of E and v
+E - > edges
+v - > vertices
+
+ for  removing an item it takes O(v^2)time complexity
+
+for adding edge it will  take O(1) operations
+(i,e) we will keep track of index of matrix and nodes in hashtable
+so to get the index we just need to index (to get tge values from hashtable it takes O(1) tie complexity)
+
+for  removing an edge  it will takes O(1)  becoz we are using the hashtable to manage the index
+ 
+to check if two nodes are connected for that TC -> O(1)  
+
+to find neighbours of the specfic node it takes O(V)
+
+we have to take indexof the specfic node and we have to check the entire row
+
+
+
+it takes more space 
+but 
+==================
+for adding edge 
+remove edge
+check is both nodes are connected 
+
+for this it take only O(1) Tc
+
+space(v^2)
+
+for finding neighbours of the gven node it takes O(v)
+
+less time more space
+
+for Adding and removig node  it take more time
+O(v^2)
+
+
+
+
+lets say 
+
+
+4. Adjacency list
+====================
+4. Adjacency list
+====================
+
+we can use array of linked list
+
+
+TC
+
+adding node ---  O(1)
+Remove node -- O(E+v)   O(v^2)
+when we ar removing the node 
+
+first we have to remove the node from the list 
+and we have to iterate all the index of the list that having linked list 
+so in worst case it wil take O(v^2) 
+step 1
+	iterate over the list O(N)
+	each index of list having one linked list (removing the element in the node it will take O(n) T C)
+	total we can say O(n^2)
+
+
+adding the edge
+	 between two nodes  it will take O(n) becoz we have to check wheather the node is already connected or nott
+so we have to traverse entire linked list  O(n) or O(E)TC
+
+removing edge it will take O(V) opeartion
+
+to find all the node is adjacent to given node 
+for that we have to take the index of the node from hashmap and 
+ iterate the through entire linked list to get all the neighbours
+
+K - > neighbours  in worst case O(v)
+O(K)  - > O(V)
+
+
+if we are  dealing with dense graph then use wih matrix  as it is taking less time
+
+
+Total space  (E(v))   O(v^2)
+
+
+
+
