@@ -15,7 +15,7 @@ public class CompletableFutureSample {
 		
 		var future =	CompletableFuture.runAsync(task);
 		
-		future.get(); //  currently it is bocking main thread until the all task have to be executed by completeablf future  later we will go throught another methods  supports Async prgramming
+		future.get(); //  currently it is bocking main thread until the all task have to be executed by completeablf future  later we will go throught another methods  supports Async prgramming 
 		}
 		
 		System.out.println("Over");
