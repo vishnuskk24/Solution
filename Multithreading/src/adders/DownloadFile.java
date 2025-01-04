@@ -1,4 +1,4 @@
-package Volatile;
+package adders;
 
 public class DownloadFile implements Runnable {
 
@@ -12,22 +12,14 @@ public class DownloadFile implements Runnable {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		
+		for(int i=0;i<10_000;i++) {
 		
-		for(int i=0;i<10_0000;i++) { // each will add 1 lack to the total bytes so total ten thread so 10 lakhs  
-//			System.out.println();
 			status.incrementTotalBytes();
 		}
-		
-		status.setDone();
-		
-		synchronized (status) {
-			status.notifyAll();
-		}
+//		
 		System.out.println("Download file " +  Thread.currentThread().getName());
 		
-	
 	}
 
 	
