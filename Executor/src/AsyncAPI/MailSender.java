@@ -13,7 +13,7 @@ public class MailSender  {
 	
 	public CompletableFuture<Void> sendAsync() {
 		Runnable r =()->send();
-		return 	CompletableFuture.runAsync(r);
+		return 	CompletableFuture.runAsync(r);  // 		wraping syn
 	}
 	
 }
